@@ -1,0 +1,9 @@
+{
+  "name": "gelsey",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "github.com/thisadrian/gelsey",
+  "author": "Adro <acousens@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
