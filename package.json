@@ -12,6 +12,7 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
     "gridsome": "^0.7.23",
     "tailwindcss": "^2.0.4"

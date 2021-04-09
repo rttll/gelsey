@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <VimeoPlayer />
     <h1>video</h1>
     <div id="ytplayer"></div>
     <ul>
@@ -13,7 +14,9 @@
 </template>
 
 <script>
+import VimeoPlayer from '../components/VimeoPlayer.vue';
 export default {
+	components: { VimeoPlayer },
   name: 'Video',
   data() {
     return {
