@@ -1,13 +1,11 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
+  <div class="w-full pt-12">
+    <header class="fixed top-0 left-0 flex justify-between items-center bg-white p-4 w-full">
+      <g-link class="block" to="/">
+        <GelseyBell class="block w-52 hidden md:block" />
+        <GB class="block w-16 md:hidden" />
+      </g-link>
+      <SiteMenu />
     </header>
     <slot/>
   </div>
@@ -21,6 +19,24 @@ query {
 }
 </static-query>
 
+<script>
+  import GelseyBell from '~/assets/svg-white/GelseyBell.svg'
+  import GB from '~/assets/GB.svg'
+  import SiteMenu from '../components/SiteMenu.vue'
+
+  export default {
+    name: 'Default',
+    components: { GelseyBell, SiteMenu, GB},
+    data() {
+      return {
+        menuActive: false
+      }
+    }
+  }
+</script>
+
+
+
 <style>
 body {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -29,22 +45,5 @@ body {
   line-height: 1.5;
 }
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
 </style>
