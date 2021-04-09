@@ -5,5 +5,19 @@
   "repository": "github.com/thisadrian/gelsey",
   "author": "Adro <acousens@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "build": "gridsome build"
+  },
+  "dependencies": {
+    "autoprefixer": "^9",
+    "gridsome": "^0.7.23",
+    "tailwindcss": "^2.0.4"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "vue-svg-loader": "^0.16.0"
+  }
 }
