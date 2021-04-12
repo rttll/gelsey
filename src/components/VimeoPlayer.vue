@@ -1,14 +1,7 @@
 <template>
-  <div>
+  <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
     <h1>video</h1>
     <div ref="player" id="vimeo-player"></div>
-    <ul>
-      <li
-        v-on:click="() => { setVideo('509851626') } "
-      >
-        509851626
-        </li>
-    </ul>
   </div>
 </template>
 
@@ -16,6 +9,10 @@
 import Player from '@vimeo/player'
 export default {
   name: 'VimeoPlayer',
+  props: {
+    active: Boolean,
+    id: String
+  },  
   data() {
     return {
       player: null,

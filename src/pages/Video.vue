@@ -1,65 +1,59 @@
 <template>
   <Layout>
-    <VimeoPlayer />
     <h1>video</h1>
-    <div id="ytplayer"></div>
-    <ul>
-      <li
-        v-on:click="() => { setVideo('M7lc1UVf-VE') } "
-      >
-        M7lc1UVf-VE
-        </li>
-    </ul>
+    <div class="flex space-x-4">
+      <div class="relative w-3/4">
+        <div class="">
+          <YTPlayer :id="id" :active="active === 'yt' " />
+          <VimeoPlayer :id="id" :active="active === 'vimeo' " />
+        </div>
+      </div>
+      <nav class="w-1/4">
+        <ul>
+          <li
+            class="cursor-pointer"
+            v-for="link in links"
+            v-on:click="() => { setVideo(link) } "
+          >
+            {{link}}
+            </li>
+        </ul>
+      </nav>
+    </div>
   </Layout>
 </template>
 
 <script>
+import YTPlayer from '../components/YTPlayer.vue'
 import VimeoPlayer from '../components/VimeoPlayer.vue';
 export default {
-	components: { VimeoPlayer },
+	components: { VimeoPlayer, YTPlayer },
   name: 'Video',
   data() {
     return {
-      yt: {
-        player: null,
-        videoId: null
-      },
-      vimeo: {
-        player: null
-      }
+      id: null,
+      active: 'yt',
+      links: ['https://www.youtube.com/watch?v=j77wUsGrvrA']
     }
   },
   methods: {
-    createYTPlayer() {
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/player_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      // <!-- https://www.youtube.com/watch?v=qXeceMXAwN0 --> 
-    }, 
-    onYTReady() {
-      // this.yt.player.loadVideoById("bHQqvYy5KYo", 0, "large")
-    },
-    onYTStateChange() {},
-    setVideo(id) {
-      this.yt.player.loadVideoById(id, 0, "large")
+    setVideo(url) {
+      const yt = url.includes('youtube')
+      if (yt) {
+        this.id = url.split('=').pop()
+        this.active = 'yt'
+      } else {
+        this.id = url.split('=').pop()
+        this.active = 'vimeo'
+      }
     }
   },
   mounted() {
-    if (this.yt.player === null) this.createYTPlayer()
+    this.setVideo(this.links[0])
+    // if (this.yt.player === null) this.createYTPlayer()
   },
   created() {
-    const onYouTubePlayerAPIReady = () => {
-      this.yt.player = new YT.Player('ytplayer', {
-        height: '360',
-        width: '640',
-        events: {
-          'onReady': this.onYTReady,
-          'onStateChange': this.onYTStateChange
-        }
-      });
-    }
-    window.onYouTubePlayerAPIReady = onYouTubePlayerAPIReady.bind(this)
+    
   }
 }
 </script>
