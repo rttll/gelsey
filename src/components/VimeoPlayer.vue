@@ -1,8 +1,12 @@
 <template>
-  <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
-    <h1>video</h1>
-    <div ref="player" id="vimeo-player"></div>
+  
+  <div>
+    <p>vimeo active {{active}}</p>
+    <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
+      <div ref="player" id="vimeo-player"></div>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -16,22 +20,37 @@ export default {
   data() {
     return {
       player: null,
-      videoId: null
+      autoplay: false
     }
   },
+  watch: {
+    active(is, was) {
+      if (!this.player) this.createPlayer()
+      if (is) {
+        this.setVideo()
+      } else {
+        this.player.pause()
+      }
+    }
+  },  
   methods: {
+    onPlayerLoaded() {
+      if (this.autoplay) this.player.play()
+      else this.autoplay = true // todo: this is activating on first load, should not
+    },
     createPlayer() {
-      this.player = new Player('vimeo-player', {id: '196345588'})
+      this.player = new Player('vimeo-player', {id: parseInt(this.id)})
+      this.player.on('loaded', this.onPlayerLoaded)
     }, 
-    setVideo(id) {
-      this.player.loadVideo(parseInt(id))
+    setVideo: async function() {
+      const currentId = await this.player.getVideoId()
+      if (currentId === parseInt(this.id)) {
+        this.player.play()
+      } else {
+        this.player.loadVideo(parseInt(this.id))
+      }
     }
   },
-  mounted() {
-    if (this.player === null) this.createPlayer()
-  },
-  created() {
-  }
 }
 </script>
 

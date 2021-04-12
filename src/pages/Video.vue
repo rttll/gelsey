@@ -4,8 +4,8 @@
     <div class="flex space-x-4">
       <div class="relative w-3/4">
         <div class="">
-          <YTPlayer :id="id" :active="active === 'yt' " />
-          <VimeoPlayer :id="id" :active="active === 'vimeo' " />
+          <YTPlayer    :id="yt.id" :active="yt.active" />
+          <VimeoPlayer :id="vim.id" :active="vim.active" />
         </div>
       </div>
       <nav class="w-1/4">
@@ -31,26 +31,38 @@ export default {
   name: 'Video',
   data() {
     return {
-      id: null,
-      active: 'yt',
-      links: ['https://www.youtube.com/watch?v=j77wUsGrvrA']
+      yt: {
+        id: null,
+        active: false
+      }, 
+      vim: {
+        id: null, 
+        active: false
+      },
+      links: [
+        'https://vimeo.com/533583983',
+        'https://www.youtube.com/watch?v=j77wUsGrvrA',
+      ]
     }
   },
   methods: {
     setVideo(url) {
       const yt = url.includes('youtube')
       if (yt) {
-        this.id = url.split('=').pop()
-        this.active = 'yt'
+        this.vim.active = false
+        this.yt.id = url.split('=').pop()
+        this.yt.active = true
       } else {
-        this.id = url.split('=').pop()
-        this.active = 'vimeo'
+        this.yt.active = false
+        this.vim.id = url.split('/').pop()
+        this.vim.active = true
       }
     }
   },
   mounted() {
-    this.setVideo(this.links[0])
-    // if (this.yt.player === null) this.createYTPlayer()
+    this.$nextTick(() => {
+      this.setVideo(this.links[0])
+    })
   },
   created() {
     

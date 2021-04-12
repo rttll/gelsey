@@ -1,7 +1,11 @@
 <template>
+<div>
+
+    <p>yt active {{active}}</p>
   <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
-    <div id="ytplayer"></div>
+    <div id="player"></div>
   </div>
+</div>
 </template>
 
 <script>
@@ -16,28 +20,31 @@ export default {
       player: null
     }
   },
-  methods: {
-    createYTPlayer() {
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/player_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      // <!-- https://www.youtube.com/watch?v=qXeceMXAwN0 --> 
-    }, 
-    onYTReady() {
-      // this.yt.player.loadVideoById("bHQqvYy5KYo", 0, "large")
-    },
-    onYTStateChange() {},
-    setVideo(id) {
-      this.player.loadVideoById(id, 0, "large")
+  watch: {
+    active(is, was) {
+      if (!this.player) return;
+      if (is) {
+        this.setVideo()
+      }
+      else {this.player.pauseVideo()}
     }
   },
-  mounted() {
-    if (this.yt.player === null) this.createYTPlayer()
+  methods: { 
+    onYTReady() {
+      if (this.active) {
+        this.setVideo()
+      }
+      // this.player.loadVideoById("bHQqvYy5KYo", 0, "large")
+    },
+    onYTStateChange() {},
+    setVideo() {
+
+      this.player.loadVideoById(this.id, 0, "large")
+    }
   },
   created() {
     const onYouTubePlayerAPIReady = () => {
-      this.yt.player = new YT.Player('ytplayer', {
+      this.player = new YT.Player('player', {
         height: '360',
         width: '640',
         events: {
@@ -47,6 +54,13 @@ export default {
       });
     }
     window.onYouTubePlayerAPIReady = onYouTubePlayerAPIReady.bind(this)
+    if (document.getElementById('youtube-api') === null) {
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      tag.id = "youtube-api"
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);    
+    }
   }
 }
 </script>
