@@ -1,12 +1,7 @@
 <template>
-  
   <div>
-    <p>vimeo active {{active}}</p>
-    <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
-      <div ref="player" id="vimeo-player"></div>
-    </div>
+    <div ref="player" id="vimeo-player"></div>
   </div>
-
 </template>
 
 <script>
@@ -23,16 +18,6 @@ export default {
       autoplay: false
     }
   },
-  watch: {
-    active(is, was) {
-      if (!this.player) this.createPlayer()
-      if (is) {
-        this.setVideo()
-      } else {
-        this.player.pause()
-      }
-    }
-  },  
   methods: {
     onPlayerLoaded() {
       if (this.autoplay) this.player.play()
@@ -43,6 +28,7 @@ export default {
       this.player.on('loaded', this.onPlayerLoaded)
     }, 
     setVideo: async function() {
+      console.log('set')
       const currentId = await this.player.getVideoId()
       if (currentId === parseInt(this.id)) {
         this.player.play()
@@ -50,6 +36,10 @@ export default {
         this.player.loadVideo(parseInt(this.id))
       }
     }
+  },
+  mounted() {
+    if (!this.player) this.createPlayer()
+    this.setVideo()  
   },
 }
 </script>

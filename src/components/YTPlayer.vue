@@ -1,11 +1,7 @@
 <template>
-<div>
-
-    <p>yt active {{active}}</p>
-  <div :class=" `absolute ${active ? 'opacity-100' : 'opacity-0' }` ">
+  <div>
     <div id="player"></div>
   </div>
-</div>
 </template>
 
 <script>
@@ -20,48 +16,55 @@ export default {
       player: null
     }
   },
-  watch: {
-    active(is, was) {
-      if (!this.player) return;
-      if (is) {
-        this.setVideo()
-      }
-      else {this.player.pauseVideo()}
-    }
-  },
   methods: { 
-    onYTReady() {
-      if (this.active) {
-        this.setVideo()
-      }
-      // this.player.loadVideoById("bHQqvYy5KYo", 0, "large")
-    },
-    onYTStateChange() {},
-    setVideo() {
-
-      this.player.loadVideoById(this.id, 0, "large")
-    }
-  },
-  created() {
-    const onYouTubePlayerAPIReady = () => {
+    createPlayer() {
       this.player = new YT.Player('player', {
         height: '360',
         width: '640',
+        playerVars: {
+          controls: 1,
+          iv_load_policy: 3,
+          modestbranding: 1
+        },
         events: {
-          'onReady': this.onYTReady,
-          'onStateChange': this.onYTStateChange
+          'onReady': this.onYTReady // This must be called for the api to work, even if it's not used
         }
       });
-    }
-    window.onYouTubePlayerAPIReady = onYouTubePlayerAPIReady.bind(this)
-    if (document.getElementById('youtube-api') === null) {
+    },
+    onYTReady() {
+      this.player.loadVideoById(this.id, 0, "large")
+    },
+    createScriptTag() {
+      // onYouTubePlayerAPIReady() is called automatically by the API, so make it globally available
+      // It is only called once, when the script is loaded
+      // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+
+      const onYouTubePlayerAPIReady = () => { 
+        this.createPlayer() 
+      }
+      window.onYouTubePlayerAPIReady = onYouTubePlayerAPIReady.bind(this)
+
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/player_api";
       tag.id = "youtube-api"
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);    
+    },    
+  },
+  mounted() {
+    // We always create a new Player on mount, but only load the script once.
+    const firstMount = document.getElementById('youtube-api') === null
+    if (firstMount) {
+
+      // Load script, which will create player in the
+      // onYouTubePlayerAPIReady() callback
+      this.createScriptTag()
+    } else {
+
+      // Script is already loaded, so create player directly
+      this.createPlayer()
     }
-  }
+  },
 }
 </script>
 
