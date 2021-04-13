@@ -9,11 +9,16 @@ export default {
   name: 'YTPlayer',
   props: {
     active: Boolean,
-    id: String
+    video: Object
   },
   data() {
     return {
       player: null
+    }
+  },
+  computed: {
+    id() {
+      return this.video.url.split('=').pop()
     }
   },
   methods: { 

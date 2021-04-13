@@ -12,6 +12,7 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.0",
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
     "gridsome": "^0.7.23",

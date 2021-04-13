@@ -10,12 +10,18 @@ export default {
   name: 'VimeoPlayer',
   props: {
     active: Boolean,
-    id: String
+    video: Object
   },  
   data() {
     return {
       player: null,
       autoplay: false
+    }
+  },
+  computed: {
+    id() {
+      // todo this will fail if url has trailing slash
+      return this.video.url.split('/').pop()
     }
   },
   methods: {
