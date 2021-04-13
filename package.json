@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "gridsome develop",
+    "dev": "open http://localhost:8080 && gridsome develop",
     "explore": "gridsome explore",
     "build": "gridsome build"
   },
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
+    "concurrently": "^6.0.2",
     "vue-svg-loader": "^0.16.0"
   }
 }

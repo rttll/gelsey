@@ -20,7 +20,7 @@
             v-for="link in links"
             v-on:click="() => { setVideo(link) } "
           >
-            {{link}}
+              <VideoListLink :url="link" />
             </li>
         </ul>
       </nav>
@@ -29,10 +29,11 @@
 </template>
 
 <script>
+import VideoListLink from '../components/VideoListLink.vue'
 import YTPlayer from '../components/YTPlayer.vue'
 import VimeoPlayer from '../components/VimeoPlayer.vue';
 export default {
-	components: { VimeoPlayer, YTPlayer },
+	components: { VimeoPlayer, YTPlayer, VideoListLink },
   name: 'Video',
   data() {
     return {
