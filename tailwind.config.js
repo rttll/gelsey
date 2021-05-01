@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: [
     'src/layout/*.vue',
@@ -7,10 +9,10 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      screens: {
-        'video-md': '1000px',
-      },
+    screens: {
+      'album-md': '450px',
+      'video-md': '1000px',
+      ...defaultTheme.screens,
     },
   },
   variants: {
