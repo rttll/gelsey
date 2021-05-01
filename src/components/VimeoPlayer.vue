@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <div ref="player" id="vimeo-player"></div>
   </div>
 </template>
@@ -24,6 +24,11 @@ export default {
       return this.video.url.split('/').pop()
     }
   },
+  watch: {
+    video(is, was) {
+      this.setVideo()
+    }
+  },
   methods: {
     onPlayerLoaded() {
       if (this.autoplay) this.player.play()
@@ -43,7 +48,11 @@ export default {
       }
     }
   },
+  created() {
+    console.log('vimeo created')
+  },
   mounted() {
+    console.log('veimdeo mounted')
     if (!this.player) this.createPlayer()
     this.setVideo()  
   },

@@ -22,7 +22,15 @@ export default {
       return this.video.url.split('=').pop()
     }
   },
+  watch: {
+    video(is, was) {
+      this.loadVideo()
+    }
+  },
   methods: { 
+    loadVideo() {
+      this.player.loadVideoById(this.id, 0, "large")
+    },
     createPlayer() {
       this.player = new YT.Player('player', {
         height: '360',
@@ -33,16 +41,16 @@ export default {
           modestbranding: 1
         },
         events: {
-          'onReady': this.onYTReady // This must be called for the api to work, even if it's not used
+          'onReady': this.loadVideo
         }
       });
     },
     onYTReady() {
       console.log('yt read play')
-      this.player.loadVideoById(this.id, 0, "large")
+      this.loadVideo()
     },
     createScriptTag() {
-      // onYouTubePlayerAPIReady() is called automatically by the API, so make it globally available
+      // onYouTubePlayerAPIReady() is called automatically by the API, and must be globally available
       // It is only called once, when the script is loaded
       // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
 

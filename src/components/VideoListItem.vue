@@ -1,7 +1,7 @@
 <template>
   <li class="flex items-start space-x-2">
     <div
-      class="w-1/2 cursor-pointer"
+      class="w-1/2 bg-pink-400 cursor-pointer"
       :style="style"
       @click.prevent="$emit('clicked')"
       >
@@ -12,8 +12,12 @@
         class="relative block cursor-pointer"
         @click.prevent="$emit('clicked')"
       >
-        <span class="block font-medium tex-sm">{{video.title}}</span>
-        <p class="w-3/4 text-xs overflow-ellipsis">{{video.description}}</p>
+        <span class="block text-base font-medium">{{video.title}}</span>
+        <p 
+          :style="`
+            max-height: 33px;
+          `"
+        class="w-3/4 text-xs whitespace-nowrap overflow-ellipsis">{{video.description}}</p>
       </a>
     </div>
   </li>
@@ -34,9 +38,9 @@ export default {
   computed: {
     style() {
       return `
-        width: 170px;
-        height: autho;
-        padding-top: 30%; 
+        width: 168px;
+        min-width: 168px;
+        height: 94px;
         background: url(${this.src}) center center; 
         background-size: cover
       `

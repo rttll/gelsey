@@ -1,18 +1,24 @@
 <template>
   <Layout>
     <h1>video</h1>
-    <div class="flex flex-col items-start flex-initial p-4 space-y-4 md:flex-row md:p-20 md:space-x-10">
-      <div class="relative w-full space-y-4 md:w-4/6">
-        <component
-          v-bind:is="activePlayer"
-          :video="activeVideo"
-          class="overflow-hidden aspect-w-16 aspect-h-9 player-container">
-          >
-        </component>
-        <div>{{activeVideo.title}}</div>
-        <div>{{activeVideo.description}}</div>
+    <div class="flex flex-col items-start flex-initial p-4 space-y-4 video-md:space-y-0 video-md:flex-row video-md:p-20 video-md:space-x-10">
+      <div class="relative w-full space-y-4 video-md:w-4/6">
+        <div class="overflow-hidden bg-gray-800 aspect-w-16 aspect-h-9">
+          <transition name="fade" mode="out-in">
+            <component
+              v-bind:is="activePlayer"
+              :video="activeVideo"
+              class="overflow-hidden bg-gray-800 aspect-w-16 aspect-h-9">
+              >
+            </component>
+          </transition>
+        </div>
+        <div v-if="activeVideo">
+          <h1 class="text-2xl">{{activeVideo.title}}</h1>
+          <div>{{activeVideo.description}}</div>
+        </div>
       </div>
-      <nav class="flex-grow-0 w-full md:w-2/6">
+      <nav class="flex-grow-0 w-full video-md:w-2/6">
         <ul class="space-y-3">
           <VideoListItem
             v-for="video in videos"
@@ -90,5 +96,16 @@ export default {
 </script>
 
 <style>
-
+  .fade-enter-active {
+      transition: all 0.4s
+  }
+  .fade-enter {
+      opacity: 0;
+      /* margin-left: 90px; */
+  }
+  .fade-leave-active {
+      transition: all 0.4s;
+      opacity: 0;
+      /* margin-left: -100px; */
+  }
 </style>
