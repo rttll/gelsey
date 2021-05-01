@@ -48,19 +48,19 @@ export default {
   },
   methods: {
     setVimeoThumbnail() {
-      const dataUrl = 'http://vimeo.com/api/v2/video/'+this.id+'.json'
+      const dataUrl = 'https://vimeo.com/api/v2/video/'+this.id+'.json';
       fetch(dataUrl)
-      .then(resp => resp.json())
-      .then((json) => {
-        this.src = json[0].thumbnail_medium
-      })
-      .catch(console.error)
+        .then(resp => resp.json())
+        .then((json) => {
+          this.src = json[0].thumbnail_medium
+        })
+        .catch(console.error)
     },
     setYTThumbnail() {
       this.src = `https://img.youtube.com/vi/${this.id}/mqdefault.jpg`
     }
   },
-  created() {
+  mounted() {
     const yt = this.video.url.includes('youtube')
     const char = yt ? '=' : '/'
     this.id = this.video.url.split(char).pop()
