@@ -30,11 +30,11 @@ export default {
       else this.autoplay = true // todo: this is activating on first load, should not
     },
     createPlayer() {
-      this.player = new Player('vimeo-player', {id: parseInt(this.id)})
+      this.player = new Player('vimeo-player', {id: parseInt(this.id), responsive: true})
       this.player.on('loaded', this.onPlayerLoaded)
     }, 
     setVideo: async function() {
-      console.log('set')
+      console.log('set vimdeo')
       const currentId = await this.player.getVideoId()
       if (currentId === parseInt(this.id)) {
         this.player.play()

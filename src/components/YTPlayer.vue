@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="space-y-4">
     <div id="player"></div>
+
   </div>
 </template>
 
@@ -37,6 +38,7 @@ export default {
       });
     },
     onYTReady() {
+      console.log('yt read play')
       this.player.loadVideoById(this.id, 0, "large")
     },
     createScriptTag() {

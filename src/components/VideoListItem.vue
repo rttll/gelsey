@@ -6,13 +6,16 @@
       @click.prevent="$emit('clicked')"
       >
     </div>
-    <a
-      href="/"
-      class="relative block cursor-pointer"
-      @click.prevent="$emit('clicked')"
-    >
-      <span class="block font-medium">{{video.title}}</span>
-    </a>
+    <div class="h-full overflow-hidden">
+      <a
+        href="/"
+        class="relative block cursor-pointer"
+        @click.prevent="$emit('clicked')"
+      >
+        <span class="block font-medium tex-sm">{{video.title}}</span>
+        <p class="w-3/4 text-xs overflow-ellipsis">{{video.description}}</p>
+      </a>
+    </div>
   </li>
 </template>
 
@@ -30,7 +33,13 @@ export default {
   },
   computed: {
     style() {
-      return `padding-top: 30%; background: url(${this.src}) center center; background-size: cover`
+      return `
+        width: 170px;
+        height: autho;
+        padding-top: 30%; 
+        background: url(${this.src}) center center; 
+        background-size: cover
+      `
     }
   },
   methods: {
