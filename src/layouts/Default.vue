@@ -1,8 +1,8 @@
 <template>
   <div class="w-full pt-12">
-    <header class="fixed top-0 left-0 flex justify-between items-center bg-white p-4 w-full">
+    <header class="fixed top-0 left-0 z-20 flex items-center justify-between w-full p-4 bg-white">
       <g-link class="block" to="/">
-        <GelseyBell class="block w-52 hidden md:block" />
+        <GelseyBell class="hidden block w-52 md:block" />
         <GB class="block w-16 md:hidden" />
       </g-link>
       <SiteMenu />
