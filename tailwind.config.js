@@ -9,6 +9,10 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ['Libre Franklin', 'sans-serif'],
+      display: ['Fraunces72pt', 'Georgia', 'Cambria', 'serif'],
+    },
     screens: {
       'album-md': '450px',
       'video-md': '1000px',

@@ -12,6 +12,7 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "@fontsource/libre-franklin": "^4.3.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
