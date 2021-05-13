@@ -1,8 +1,13 @@
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+
+/* https://github.com/undercasetype/Fraunces */
+@font-face {
+  font-family: 'Fraunces72pt';
+  src: url('./assets/fonts/Fraunces72pt-Thin.woff2');
+  font-weight: thin;
+}
 
 .fade-enter-active,
 .fade-leave-active {

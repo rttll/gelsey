@@ -7,11 +7,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "open http://localhost:8080 && gridsome develop",
+    "start": "open http://localhost:8080 && gridsome develop",
     "explore": "gridsome explore",
     "build": "gridsome build"
   },
   "dependencies": {
+    "@fontsource/libre-franklin": "^4.3.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",

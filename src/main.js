@@ -3,9 +3,13 @@
 
 require('~/main.css');
 
+// https://fontsource.org/fonts/libre-franklin
+import '@fontsource/libre-franklin/400.css';
+
 import DefaultLayout from '~/layouts/Default.vue';
+import Heading from '~/components/Heading.vue';
 
 export default function(Vue, { router, head, isClient }) {
-  // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);
+  Vue.component('Heading', Heading);
 }
