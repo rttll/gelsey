@@ -38,25 +38,27 @@
             <videos />
           </g-link>
         </div>
-        <div class="border-dashed gorder-gray-200"><press /></div>
+        <div class="border-dashed gorder-gray-200">
+          <g-link to="/press/"> <press /></g-link>
+        </div>
       </div>
     </div>
   </Layout>
 </template>
 
 <script>
-import albums from "~/assets/svg-white/albums.svg";
-import composer from "~/assets/svg-white/composer.svg";
-import performer from "~/assets/svg-white/performer.svg";
-import press from "~/assets/svg-white/press.svg";
-import scholar from "~/assets/svg-white/scholar.svg";
-import videos from "~/assets/svg-white/videos.svg";
+import albums from '~/assets/svg-white/albums.svg';
+import composer from '~/assets/svg-white/composer.svg';
+import performer from '~/assets/svg-white/performer.svg';
+import press from '~/assets/svg-white/press.svg';
+import scholar from '~/assets/svg-white/scholar.svg';
+import videos from '~/assets/svg-white/videos.svg';
 
 export default {
   metaInfo: {
-    title: "Home"
+    title: 'Home',
   },
-  components: { albums, composer, performer, press, scholar, videos }
+  components: { albums, composer, performer, press, scholar, videos },
 };
 </script>
 
