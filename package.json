@@ -22,6 +22,8 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "concurrently": "^6.0.2",
+    "gridsome-source-sanity": "^1.0.5",
+    "sanity-blocks-vue-component": "^1.0.0",
     "vue-svg-loader": "^0.16.0"
   }
 }

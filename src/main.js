@@ -9,6 +9,8 @@ https://fontsource.org/fonts/libre-franklin
 import '@fontsource/libre-franklin/600.css';
 import '@fontsource/libre-franklin/400.css';
 
+import BlockContent from 'sanity-blocks-vue-component';
+
 import DefaultLayout from '~/layouts/Default.vue';
 import Heading from '~/components/Heading.vue';
 import ChevronDown from '~/assets/icons/chevron-down.svg';
@@ -21,4 +23,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.component('ChevronDown', ChevronDown);
   Vue.component('ChevronUp', ChevronUp);
   Vue.component('ExternalLink', ExternalLink);
+  Vue.component('BlockContent', BlockContent);
 }
