@@ -3,8 +3,18 @@
 .DS_Store
 src/.temp
 node_modules
+
 dist
+
+# Sanity
+!admin/
+admin/*
+!admin/schemas
+!admin/sanity.json
+
+
 .env
 .env.*
 
 .vercel
+

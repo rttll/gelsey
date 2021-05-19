@@ -12,6 +12,9 @@ const postcssPlugins = [tailwind()];
 // if (process.env.NODE_ENV === 'production')
 // postcssPlugins.push(purgecss(require('./purgecss.config.js')));
 
+const projectId = 'w3gbpmev';
+const datasetName = 'production';
+
 module.exports = {
   siteName: 'Gelsey Bell',
   chainWebpack: (config) => {
@@ -19,7 +22,24 @@ module.exports = {
     svgRule.uses.clear();
     svgRule.use('vue-svg-loader').loader('vue-svg-loader');
   },
-  plugins: [],
+  plugins: [
+    {
+      use: 'gridsome-source-sanity',
+      options: {
+        projectId: projectId,
+        dataset: datasetName,
+        // Token is only required if dataset is private
+        // or `overlayDrafts` is set to true
+        // token: '<tokenWithReadRights>',
+        overlayDrafts: false,
+        watchMode: true,
+
+        // If the Sanity GraphQL API was deployed using `--tag <name>`,
+        // use `graphqlTag` to specify the tag name. Defaults to `default`.
+        graphqlTag: 'default',
+      },
+    },
+  ],
   css: {
     loaderOptions: {
       postcss: {

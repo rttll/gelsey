@@ -19,7 +19,7 @@
           </div>
           <div v-if="activeVideo">
             <h1 class="text-2xl">{{ activeVideo.title }}</h1>
-            <div>{{ activeVideo.description }}</div>
+            <BlockContent :blocks="activeVideo._rawDescription" />
           </div>
         </div>
         <nav class="flex-grow-0 w-full video-md:w-2/6">
@@ -41,6 +41,21 @@
   </Layout>
 </template>
 
+<page-query>
+  query {
+    videos: allSanityVideo(sort: [{order: ASC}]) {
+      edges {
+        node {
+          id
+          title
+          url
+          _rawDescription(resolveReferences: {maxDepth: 5})
+        }
+      }
+    } 
+  }
+</page-query>
+
 <script>
 import VideoListItem from '~/components/VideoListItem.vue';
 import YTPlayer from '~/components/YTPlayer.vue';
@@ -52,38 +67,12 @@ export default {
     return {
       activePlayer: null,
       activeVideo: null,
-      videos: [
-        {
-          title: 'youtube video about this thing',
-          url: 'https://www.youtube.com/watch?v=j77wUsGrvrA',
-          description: 'this is the description. areyount you glad??',
-        },
-        {
-          title: 'vimeo video. watch it',
-          url: 'https://vimeo.com/196345588',
-          description: 'this is the description. areyount you glad??',
-        },
-        {
-          title: 'Tips',
-          url: 'https://www.youtube.com/watch?v=u9BoG1n1948',
-          description: 'this is the description. areyount you glad??',
-        },
-        {
-          title: 'frararar',
-          url: 'https://vimeo.com/126060304',
-          description: 'this is the description. areyount you glad??',
-        },
-        {
-          title: 'another youtube',
-          url: 'https://www.youtube.com/watch?v=4n6LrehCPOQ',
-          description: 'this is the description. areyount you glad??',
-        },
-      ],
+      videos: [],
     };
   },
   methods: {
     setVideo(video) {
-      console.log('set vid', video);
+      // console.log('set vid', video);
       const yt = video.url.includes('youtube');
       if (yt) {
         this.activePlayer = YTPlayer;
@@ -94,6 +83,7 @@ export default {
     },
   },
   mounted() {
+    this.videos = this.$page.videos.edges.map((obj) => obj.node);
     this.$nextTick(() => {
       this.setVideo(this.videos[0]);
     });
