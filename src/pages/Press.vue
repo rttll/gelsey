@@ -28,9 +28,9 @@
             :key="quote.id"
             class="px-4 py-10 text-center md:w-1/2 md:px-0"
           >
-            {{ quote.text }}
+            <BlockContent :blocks="quote._rawQuote" />
             <div class="flex justify-end">
-              <cite> &mdash; {{ quote.author }}</cite>
+              <cite> &mdash; {{ quote.cite }}</cite>
             </div>
           </blockquote>
         </div>
@@ -74,18 +74,25 @@
         }
       }
     }
+    quotes: allSanityQuotes(sort: [{order: ASC}]) {
+      edges {
+        node {
+          id
+          cite
+          _rawQuote
+        }
+      }
+    }
   }
 </page-query>
 
 <script>
-import quotes from '../../content/quotes';
-
 export default {
   name: 'Press',
   data() {
     return {
       projects: [],
-      quotes: quotes,
+      quotes: [],
       showQuotes: false,
     };
   },
@@ -109,6 +116,7 @@ export default {
   },
   mounted() {
     this.projects = this.$page.presses.edges.map((obj) => obj.node);
+    this.quotes = this.$page.quotes.edges.map((obj) => obj.node);
   },
 };
 </script>

@@ -1,22 +1,17 @@
 export default {
-  title: 'Press (Articles)',
-  name: 'press',
+  title: 'Press (Quotes)',
+  name: 'quotes',
   type: 'document',
   fields: [
     {
-      title: 'Project title',
-      name: 'title',
-      type: 'string',
+      title: 'Quote',
+      name: 'quote',
+      type: 'blockContent',
     },
     {
-      title: 'Articles',
-      name: 'articles',
-      type: 'array',
-      of: [
-        {
-          type: 'link',
-        },
-      ],
+      title: 'Cite',
+      name: 'cite',
+      type: 'string',
     },
     {
       name: 'order',
