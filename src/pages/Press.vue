@@ -6,35 +6,36 @@
       </Heading>
     </header>
 
-    <section class="p-4 my-4 border-t border-gray-300 border-wb">
+    <section class="p-4 my-4 border-t border-b border-gray-300 border-wb">
+      <div class="flex flex-col items-center justify-center ">
+        <BlockQuote :quote="quotes[0]._rawQuote" :cite="quotes[0].cite" />
+      </div>
+
+      <transition name="slide-down">
+        <div
+          v-if="showQuotes"
+          :class="`flex flex-col items-center justify-center`"
+        >
+          <BlockQuote
+            v-for="quote in quotes.slice(1)"
+            :key="quote.id"
+            :quote="quote._rawQuote"
+            :cite="quote.cite"
+          />
+          :quote="quote._rawQuote"
+        </div>
+      </transition>
       <p class="flex justify-end">
         <a
           class="flex items-center text-xs"
           href="#"
           @click="showQuotes = !showQuotes"
         >
-          <span>{{ showQuotes ? 'Hide Quotes' : 'Show Quotes' }}</span>
+          <span>{{ showQuotes ? 'Less quotes' : 'More quotes' }}</span>
           <ChevronUp v-if="showQuotes" class="p-1" />
           <ChevronDown v-else class="p-1" />
         </a>
       </p>
-      <transition name="slide-down">
-        <div
-          v-if="showQuotes"
-          class="flex flex-col items-center justify-center space-y-20"
-        >
-          <blockquote
-            v-for="quote in quotes"
-            :key="quote.id"
-            class="px-4 py-10 text-center md:w-1/2 md:px-0"
-          >
-            <BlockContent :blocks="quote._rawQuote" />
-            <div class="flex justify-end">
-              <cite> &mdash; {{ quote.cite }}</cite>
-            </div>
-          </blockquote>
-        </div>
-      </transition>
     </section>
 
     <section class="flex flex-col md:flex-row md:-ml-4">
@@ -87,8 +88,10 @@
 </page-query>
 
 <script>
+import BlockQuote from '~/components/BlockQuote';
 export default {
   name: 'Press',
+  components: { BlockQuote },
   data() {
     return {
       projects: [],
@@ -114,7 +117,7 @@ export default {
       return arr;
     },
   },
-  mounted() {
+  created() {
     this.projects = this.$page.presses.edges.map((obj) => obj.node);
     this.quotes = this.$page.quotes.edges.map((obj) => obj.node);
   },
