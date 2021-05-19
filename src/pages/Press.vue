@@ -49,7 +49,7 @@
                 class="block py-1 space-x-2 font-normal text-gray-500 cursor-pointer hover:underline"
                 :href="article.href"
               >
-                <span>{{ article.title }}</span>
+                <span>{{ article.text }}</span>
               </a>
             </li>
           </ul>
@@ -59,15 +59,32 @@
   </Layout>
 </template>
 
+<page-query>
+  query {
+    presses: allSanityPress(sort: [{order: ASC}]) {
+      edges {
+        node {
+          id
+          title 
+          articles {
+            _key
+            text 
+            href
+          }
+        }
+      }
+    }
+  }
+</page-query>
+
 <script>
-import press from '../../content/press';
 import quotes from '../../content/quotes';
 
 export default {
   name: 'Press',
   data() {
     return {
-      projects: press,
+      projects: [],
       quotes: quotes,
       showQuotes: false,
     };
@@ -89,6 +106,9 @@ export default {
       }
       return arr;
     },
+  },
+  mounted() {
+    this.projects = this.$page.presses.edges.map((obj) => obj.node);
   },
 };
 </script>
