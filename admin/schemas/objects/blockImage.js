@@ -18,10 +18,8 @@ export default {
       of: [{ type: 'string' }],
       options: {
         list: [
-          { title: 'None', value: 'none' },
           { title: 'Left', value: 'left' },
           { title: 'Right', value: 'right' },
-          { title: 'Center', value: 'center' },
         ],
       },
       validation: (Rule) => Rule.max(1),

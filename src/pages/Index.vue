@@ -5,7 +5,9 @@
         class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
       >
         <div class="p-4 text-center border-r border-gray-200 border-dashed">
-          Bio
+          <g-link to="/bio/">
+            Bio
+          </g-link>
         </div>
         <div class="p-4 text-center border-r border-gray-200 border-dashed">
           Events
