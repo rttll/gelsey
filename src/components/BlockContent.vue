@@ -33,4 +33,8 @@ export default {
   min-height: 1px;
   padding: 1rem 0;
 }
+
+.content p:first-child {
+  padding-top: 0;
+}
 </style>

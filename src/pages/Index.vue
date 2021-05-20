@@ -10,7 +10,9 @@
           </g-link>
         </div>
         <div class="p-4 text-center border-r border-gray-200 border-dashed">
-          Events
+          <g-link to="/events/">
+            Events
+          </g-link>
         </div>
         <div class="p-4 text-center border-gray-200 border-dashed ">
           Contact

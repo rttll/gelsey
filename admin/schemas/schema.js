@@ -9,9 +9,11 @@ import bio from './documents/bio';
 import video from './documents/video';
 import press from './documents/press';
 import quote from './documents/quote';
+import event from './documents/event';
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
+import address from './objects/address';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,6 +25,8 @@ export default createSchema({
     bio,
     album,
     video,
+    address,
+    event,
     quote,
     press,
     blockContent,
