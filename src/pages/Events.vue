@@ -50,7 +50,10 @@
         <div v-for="(events, year) in group" :key="year">
           <h3 class="text-2xl font-semibold">{{ year }}</h3>
           <ul>
-            <li v-for="event in events" class="flex space-x-1 text-sm">
+            <li
+              v-for="event in events"
+              class="flex space-x-1 overflow-hidden text-sm whitespace-nowrap"
+            >
               <span>{{ event.date }} &bull; </span>
               <span>{{ event.title }} &bull; </span>
               <span v-if="event.address" class="flex space-x-1">
@@ -58,6 +61,22 @@
                 <span>{{ event.address.line1 }}, </span>
                 <span>{{ event.address.line2 }}, </span>
               </span>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="p-4 pb-20 space-y-8">
+      <article v-for="(group, i) in archives" :key="i" class="">
+        <div v-for="(archive, year) in group" :key="year">
+          <h3 class="text-2xl font-semibold">{{ year }}</h3>
+          <ul>
+            <li
+              v-for="data in archive"
+              class="flex space-x-1 overflow-hidden text-sm leading-relaxed whitespace-nowrap"
+            >
+              <span v-html="data.text"></span>
             </li>
           </ul>
         </div>
@@ -87,6 +106,15 @@
         }
       }
     } 
+    archives: allSanityEventArchive {
+      edges {
+        node {
+          id
+          text
+          year
+        }
+      }
+    } 
   }
 </page-query>
 
@@ -97,9 +125,35 @@ export default {
     return {
       currentEvents: [],
       pastEvents: [],
+      archives: [],
     };
   },
+  methods: {
+    setArchives() {
+      let archives = this.$page.archives.edges.map(({ node }) => node);
+      let ids = archives.map(({ id }) => id).join(' ');
+      window.ids = ids;
+      let years = [];
+      archives.forEach((obj) => {
+        if (!years.includes(obj.year)) years.push(obj.year);
+      });
+
+      for (let year of years) {
+        let batch = archives.filter((node) => node.year === year);
+        this.archives.unshift({ [year]: batch });
+      }
+      this.archives = this.archives
+        .sort((a, b) => {
+          let aYear = parseInt(Object.keys(a)[0]);
+          let bYear = parseInt(Object.keys(b)[0]);
+          return aYear - bYear;
+        })
+        .reverse();
+    },
+  },
   created() {
+    this.setArchives();
+
     let nodes = this.$page.events.edges.map(({ node }) => {
       if (node.address) {
         node.address = node.address[0];
@@ -142,26 +196,6 @@ export default {
       let batch = past.filter((node) => node.year === year);
       this.pastEvents.unshift({ [year]: batch });
     }
-
-    // for (let node of nodes) {
-    //   if (node.date) {
-    //     if (current) {
-    //       this.currentEvents.push(node);
-    //       continue;
-    //     }
-
-    //     // let year = eventDate.getFullYear();
-    //     // if (!this.pastEvents[year]) {
-    //     //   this.pastEvents[year] = [];
-    //     // }
-    //     let formatted = new Intl.DateTimeFormat('en-US', {
-    //       dateStyle: 'short',
-    //     }).format(eventDate);
-    //     node.date = formatted.replace(/\//g, '.');
-
-    //     this.pastEvents.push(node);
-    //   }
-    // }
   },
 };
 </script>

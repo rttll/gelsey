@@ -10,6 +10,7 @@ import video from './documents/video';
 import press from './documents/press';
 import quote from './documents/quote';
 import event from './documents/event';
+import event_archive from './documents/event_archive';
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
@@ -26,6 +27,7 @@ export default createSchema({
     album,
     video,
     address,
+    event_archive,
     event,
     quote,
     press,

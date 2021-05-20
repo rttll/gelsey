@@ -7,7 +7,9 @@ copy output to out.json
 
 2. cd admin and run
 
-sanity dataset import ../content/press/out.json production --replace
+sanity dataset import ../content/{DIR}/parsed.json production --replace
+
+sanity dataset import ../content/events/parsed.json production --replace
 
 
 --missing
