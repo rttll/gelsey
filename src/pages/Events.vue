@@ -6,45 +6,50 @@
       </Heading>
     </header>
     <section class="p-4 pt-10">
-      <article
-        v-for="event in currentEvents"
-        class=""
-        :key="event.id"
-        class="flex mb-20 space-x-10 border-b border-gray-400 pb-9"
-      >
-        <div class="w-1/3 space-y-2">
-          <header>
-            <h3 class="font-semibold text-gray-600 uppercase">
-              {{ event.title }}
-            </h3>
+      <article v-for="event in currentEvents" class="" :key="event.id">
+        <header>
+          <h3 class="font-semibold text-gray-600 uppercase">
+            {{ event.title }}
+          </h3>
+        </header>
+        <div class="flex mb-20 space-x-10 border-b border-gray-400 pb-9">
+          <div class="w-1/3 space-y-2">
             <p>{{ event.date_display }}</p>
-          </header>
-          <div class="space-y-4 text-sm" v-if="event.address">
-            <h4 class="font-semibold">
-              {{ event.address.name }}
-            </h4>
-            <span v-for="part in ['street', 'city', 'state', 'zip']">
-              <span v-if="event.address[part]" class="block text-sm">
-                {{ event.address[part] }}
-              </span>
-            </span>
-            <a
-              :href="event.address.link"
-              v-if="event.address.link"
-              class="text-xs text-gray-400"
+            <span
+              v-if="event.ongoing"
+              class="inline-block px-3 text-xs text-white bg-gray-700 rounded-full"
+              style="padding-top: 2px; padding-bottom: 2px"
             >
-              {{ event.address.link }}
-            </a>
+              ongoing
+            </span>
+            <div class="space-y-4 text-sm" v-if="event.address">
+              <h4 class="font-semibold">
+                {{ event.address.name }}
+              </h4>
+              <span v-for="part in ['street', 'city', 'state', 'zip']">
+                <span v-if="event.address[part]" class="block text-sm">
+                  {{ event.address[part] }}
+                </span>
+              </span>
+              <a
+                :href="event.address.link"
+                v-if="event.address.link"
+                class="text-xs text-gray-400"
+              >
+                {{ event.address.link }}
+              </a>
+            </div>
           </div>
-        </div>
-        <div
-          class="text-sm leading-loose md:w-2/3"
-          v-if="event._rawDescription"
-        >
-          <BlockContent :blocks="event._rawDescription" />
+          <div
+            class="text-sm leading-loose md:w-2/3"
+            v-if="event._rawDescription"
+          >
+            <BlockContent :blocks="event._rawDescription" />
+          </div>
         </div>
       </article>
     </section>
+
     <section class="p-4 pb-20 space-y-8">
       <article v-for="(group, i) in pastEvents" :key="i" class="">
         <div v-for="(events, year) in group" :key="year">
@@ -86,6 +91,7 @@
           link 
           date_display
           date
+          ongoing
           _rawDescription(resolveReferences: {maxDepth: 5})
           address {
             name 
@@ -156,7 +162,7 @@ export default {
       let eventDate = new Date(node.date);
       let tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      return tomorrow < eventDate;
+      return tomorrow < eventDate || node.ongoing;
     });
     this.currentEvents = current;
 

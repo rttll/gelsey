@@ -36,6 +36,12 @@ export default {
       },
     },
     {
+      title: 'Ongoing',
+      name: 'ongoing',
+      type: 'boolean',
+      description: 'If true, event will not be moved to the archives.',
+    },
+    {
       title: 'Description',
       name: 'description',
       type: 'blockContent',
