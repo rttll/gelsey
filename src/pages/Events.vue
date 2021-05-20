@@ -67,19 +67,10 @@
       </article>
     </section>
 
-    <section class="p-4 pb-20 space-y-8">
-      <article v-for="(group, i) in archives" :key="i" class="">
-        <div v-for="(archive, year) in group" :key="year">
-          <h3 class="text-2xl font-semibold">{{ year }}</h3>
-          <ul>
-            <li
-              v-for="data in archive"
-              class="flex space-x-1 overflow-hidden text-sm leading-relaxed whitespace-nowrap"
-            >
-              <span v-html="data.text"></span>
-            </li>
-          </ul>
-        </div>
+    <section class="p-4 pb-20 text-sm">
+      <article v-for="archive in archives" :key="archive.id" class="">
+        <h3 class="text-2xl font-semibold">{{ archive.year }}</h3>
+        <BlockContent :blocks="archive._rawShows" />
       </article>
     </section>
   </Layout>
@@ -106,12 +97,12 @@
         }
       }
     } 
-    archives: allSanityEventArchive {
+    archives: allSanityEventArchive(sortBy: "year", order: DESC) {
       edges {
         node {
           id
-          text
           year
+          _rawShows
         }
       }
     } 
@@ -152,7 +143,7 @@ export default {
     },
   },
   created() {
-    this.setArchives();
+    this.archives = this.$page.archives.edges.map(({ node }) => node);
 
     let nodes = this.$page.events.edges.map(({ node }) => {
       if (node.address) {

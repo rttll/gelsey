@@ -9,9 +9,15 @@ export default {
       type: 'number',
     },
     {
-      title: 'Text',
-      name: 'text',
-      type: 'string',
+      title: 'Shows',
+      name: 'shows',
+      type: 'blockContent',
+    },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true,
     },
   ],
   orderings: [
