@@ -11,6 +11,8 @@ import press from './documents/press';
 import quote from './documents/quote';
 import event from './documents/event';
 import event_archive from './documents/event_archive';
+import work from './documents/work';
+
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
@@ -31,6 +33,7 @@ export default createSchema({
     event,
     quote,
     press,
+    work,
     blockContent,
     blockImage,
     link,

@@ -20,7 +20,9 @@
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 le-grid">
         <div class="border-b border-r border-dashed gorder-gray-200">
-          <composer />
+          <g-link to="/composer/">
+            <composer />
+          </g-link>
         </div>
         <div class="border-b border-dashed md:border-r gorder-gray-200">
           <performer />
