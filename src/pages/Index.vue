@@ -4,18 +4,20 @@
       <div
         class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
       >
-        <div class="p-4 text-center border-r border-gray-200 border-dashed">
-          <g-link to="/bio/">
-            Bio
+        <div class="text-center border-r border-gray-200 border-dashed">
+          <g-link to="/bio/" class="block w-auto h-12 p-2 small">
+            <bio />
           </g-link>
         </div>
-        <div class="p-4 text-center border-r border-gray-200 border-dashed">
-          <g-link to="/events/">
-            Events
+        <div class="text-center border-r border-gray-200 border-dashed">
+          <g-link to="/events/" class="block w-auto h-12 p-2 small">
+            <events />
           </g-link>
         </div>
-        <div class="p-4 text-center border-gray-200 border-dashed ">
-          Contact
+        <div class="text-center border-gray-200 border-dashed ">
+          <g-link to="/contact/" class="block w-auto h-12 p-2 small">
+            <contact />
+          </g-link>
         </div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 le-grid">
@@ -30,7 +32,9 @@
         <div
           class="border-b border-r border-dashed md:border-r-0 gorder-gray-200"
         >
-          <scholar />
+          <g-link to="/scholar/">
+            <scholar />
+          </g-link>
         </div>
         <div
           class="border-b border-dashed md:border-b-0 md:border-r gorder-gray-200"
@@ -53,18 +57,31 @@
 </template>
 
 <script>
-import albums from '~/assets/svg-white/albums.svg';
-import composer from '~/assets/svg-white/composer.svg';
-import performer from '~/assets/svg-white/performer.svg';
-import press from '~/assets/svg-white/press.svg';
-import scholar from '~/assets/svg-white/scholar.svg';
-import videos from '~/assets/svg-white/videos.svg';
+import albums from '~/assets/svg/white/albums.svg';
+import composer from '~/assets/svg/white/composer.svg';
+import performer from '~/assets/svg/white/performer.svg';
+import press from '~/assets/svg/white/press.svg';
+import scholar from '~/assets/svg/white/scholar.svg';
+import videos from '~/assets/svg/white/videos.svg';
+import bio from '~/assets/svg/white/bio.svg';
+import events from '~/assets/svg/white/events.svg';
+import contact from '~/assets/svg/white/contact.svg';
 
 export default {
   metaInfo: {
     title: 'Home',
   },
-  components: { albums, composer, performer, press, scholar, videos },
+  components: {
+    albums,
+    composer,
+    performer,
+    press,
+    scholar,
+    videos,
+    bio,
+    events,
+    contact,
+  },
 };
 </script>
 
@@ -74,5 +91,9 @@ export default {
   width: 100%;
   height: auto;
   max-height: 50%;
+}
+.small svg {
+  height: 100%;
+  margin: auto;
 }
 </style>
