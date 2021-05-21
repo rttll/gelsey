@@ -12,14 +12,38 @@ const postcssPlugins = [tailwind()];
 // if (process.env.NODE_ENV === 'production')
 // postcssPlugins.push(purgecss(require('./purgecss.config.js')));
 
+const projectId = 'w3gbpmev';
+const datasetName = 'production';
+
+const loaders = (config) => {
+  const svgRule = config.module.rule('svg');
+  svgRule.uses.clear();
+  svgRule.use('vue-svg-loader').loader('vue-svg-loader');
+};
+
 module.exports = {
   siteName: 'Gelsey Bell',
   chainWebpack: (config) => {
-    const svgRule = config.module.rule('svg');
-    svgRule.uses.clear();
-    svgRule.use('vue-svg-loader').loader('vue-svg-loader');
+    loaders(config);
   },
-  plugins: [],
+  runtimeCompiler: true,
+  templates: {
+    SanityWork: [
+      { path: '/composer/:title', component: './src/templates/Work.vue' },
+    ],
+  },
+  plugins: [
+    {
+      use: 'gridsome-source-sanity',
+      options: {
+        projectId: projectId,
+        dataset: datasetName,
+        overlayDrafts: false,
+        watchMode: true,
+        graphqlTag: 'default',
+      },
+    },
+  ],
   css: {
     loaderOptions: {
       postcss: {

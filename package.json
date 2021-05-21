@@ -9,10 +9,12 @@
   "scripts": {
     "start": "open http://localhost:8080 && gridsome develop",
     "explore": "gridsome explore",
-    "build": "gridsome build"
+    "build": "gridsome build",
+    "favicons": "node ./util/favicons"
   },
   "dependencies": {
     "@fontsource/libre-franklin": "^4.3.0",
+    "@sanity/client": "^2.8.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
@@ -21,7 +23,9 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
-    "concurrently": "^6.0.2",
+    "favicons": "^6.2.2",
+    "gridsome-source-sanity": "^1.0.5",
+    "sanity-blocks-vue-component": "0.1.0",
     "vue-svg-loader": "^0.16.0"
   }
 }

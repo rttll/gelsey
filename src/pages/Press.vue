@@ -6,35 +6,36 @@
       </Heading>
     </header>
 
-    <section class="p-4 my-4 border-t border-gray-300 border-wb">
+    <section class="p-4 my-4 border-t border-b border-gray-300 border-wb">
+      <div class="flex flex-col items-center justify-center ">
+        <BlockQuote :quote="quotes[0]._rawQuote" :cite="quotes[0].cite" />
+      </div>
+
+      <transition name="slide-down">
+        <div
+          v-if="showQuotes"
+          :class="`flex flex-col items-center justify-center`"
+        >
+          <BlockQuote
+            v-for="quote in quotes.slice(1)"
+            :key="quote.id"
+            :quote="quote._rawQuote"
+            :cite="quote.cite"
+          />
+          :quote="quote._rawQuote"
+        </div>
+      </transition>
       <p class="flex justify-end">
         <a
           class="flex items-center text-xs"
           href="#"
           @click="showQuotes = !showQuotes"
         >
-          <span>{{ showQuotes ? 'Hide Quotes' : 'Show Quotes' }}</span>
+          <span>{{ showQuotes ? 'Less quotes' : 'More quotes' }}</span>
           <ChevronUp v-if="showQuotes" class="p-1" />
           <ChevronDown v-else class="p-1" />
         </a>
       </p>
-      <transition name="slide-down">
-        <div
-          v-if="showQuotes"
-          class="flex flex-col items-center justify-center space-y-20"
-        >
-          <blockquote
-            v-for="quote in quotes"
-            :key="quote.id"
-            class="px-4 py-10 text-center md:w-1/2 md:px-0"
-          >
-            {{ quote.text }}
-            <div class="flex justify-end">
-              <cite> &mdash; {{ quote.author }}</cite>
-            </div>
-          </blockquote>
-        </div>
-      </transition>
     </section>
 
     <section class="flex flex-col md:flex-row md:-ml-4">
@@ -49,7 +50,7 @@
                 class="block py-1 space-x-2 font-normal text-gray-500 cursor-pointer hover:underline"
                 :href="article.href"
               >
-                <span>{{ article.title }}</span>
+                <span>{{ article.text }}</span>
               </a>
             </li>
           </ul>
@@ -59,16 +60,42 @@
   </Layout>
 </template>
 
-<script>
-import press from '../../content/press';
-import quotes from '../../content/quotes';
+<page-query>
+  query {
+    presses: allSanityPress(sort: [{order: ASC}]) {
+      edges {
+        node {
+          id
+          title 
+          articles {
+            _key
+            text 
+            href
+          }
+        }
+      }
+    }
+    quotes: allSanityQuotes(sort: [{order: ASC}]) {
+      edges {
+        node {
+          id
+          cite
+          _rawQuote
+        }
+      }
+    }
+  }
+</page-query>
 
+<script>
+import BlockQuote from '~/components/BlockQuote';
 export default {
   name: 'Press',
+  components: { BlockQuote },
   data() {
     return {
-      projects: press,
-      quotes: quotes,
+      projects: [],
+      quotes: [],
       showQuotes: false,
     };
   },
@@ -89,6 +116,10 @@ export default {
       }
       return arr;
     },
+  },
+  created() {
+    this.projects = this.$page.presses.edges.map((obj) => obj.node);
+    this.quotes = this.$page.quotes.edges.map((obj) => obj.node);
   },
 };
 </script>
