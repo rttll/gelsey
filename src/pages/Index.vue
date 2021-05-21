@@ -27,7 +27,9 @@
           </g-link>
         </div>
         <div class="border-b border-dashed md:border-r gorder-gray-200">
-          <performer />
+          <g-link to="/performer/">
+            <performer />
+          </g-link>
         </div>
         <div
           class="border-b border-r border-dashed md:border-r-0 gorder-gray-200"

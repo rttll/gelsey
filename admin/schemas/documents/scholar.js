@@ -1,6 +1,6 @@
 export default {
-  title: 'Composer',
-  name: 'composer',
+  title: 'Scholar',
+  name: 'scholar',
   type: 'document',
   fields: [
     {
@@ -10,12 +10,18 @@ export default {
       hidden: true,
     },
     {
-      name: 'body',
       title: 'Body',
+      name: 'body',
       type: 'blockContent',
+    },
+    {
+      title: 'Publications',
+      name: 'publications',
+      type: 'array',
+      of: [{ type: 'publication' }],
     },
   ],
   initialValue: {
-    title: 'Composer',
+    title: 'Scholar',
   },
 };

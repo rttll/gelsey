@@ -1,21 +1,21 @@
 export default {
-  title: 'Bio',
-  name: 'bio',
+  title: 'Contact',
+  name: 'contact',
   type: 'document',
   fields: [
     {
-      name: 'title',
       title: 'Title',
+      name: 'title',
       type: 'string',
       hidden: true,
     },
     {
-      name: 'body',
       title: 'Body',
+      name: 'body',
       type: 'blockContent',
     },
   ],
   initialValue: {
-    title: 'Bio',
+    title: 'Contact',
   },
 };

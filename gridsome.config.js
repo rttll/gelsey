@@ -26,6 +26,7 @@ module.exports = {
   chainWebpack: (config) => {
     loaders(config);
   },
+  runtimeCompiler: true,
   templates: {
     SanityWork: [
       { path: '/composer/:title', component: './src/templates/Work.vue' },

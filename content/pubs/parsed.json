@@ -1,0 +1,17 @@
+{
+  "_id": "scholar",
+  "_type": "scholar",
+  "title": "Scholar",
+  "publications": [  
+    {"_id":"publication_1","_type":"publication","belongsTo":"scholar","title":"Profound Connectivity: A Social Life of Music During the Pandemic.","publication":"TDR/The Drama Review","volume":" (forthcoming)"}
+    {"_id":"publication_2","_type":"publication","belongsTo":"scholar","title":"The Voice in Experimental Gestural Song Form.","publication":"Performance Research","volume":"v. 25, n. 1: 2019"}
+    {"_id":"publication_3","_type":"publication","belongsTo":"scholar","title":"Tracing Voice Through the Career of a Musical Pioneer: A Conversationwith Pauline Oliveros.","publication":"Journal of Interdisciplinary Voice Studies","volume":"v.2, n.1: 2017"}
+    {"_id":"publication_4","_type":"publication","belongsTo":"scholar","title":"The Value of a Makie-Uppie: Banana Bag & Bodice’s","publication":"LongYarn","volume":" (T233), 61, 1:2017"}
+    {"_id":"publication_5","_type":"publication","belongsTo":"scholar","title":"Opera and the Folds of Time in the Prototype Festival.","publication":"TDR/The Drama Review","volume":" (T232) 60, 4:2016"}
+    {"_id":"publication_6","_type":"publication","belongsTo":"scholar","title":"Extended Vocal Technique and Joan La Barbara: The Relational Ethics ofVoice on the Edge of Intelligibility.","publication":"Journal of Interdisciplinary Voice Studies","volume":"vol. 1, no. 2: 2016"}
+    {"_id":"publication_7","_type":"publication","belongsTo":"scholar","title":"Zeena Parkins and the Play of Translation and Response.","publication":"Movement Research Performance Journal","volume":" #43: 2013"}
+    {"_id":"publication_8","_type":"publication","belongsTo":"scholar","title":"What Was The War Like?: An Interview with Josh Fox on Surrender.","publication":"TDR/The Drama Review","volume":"(T214) 56, 1:2012 (co-authored with JamesBall)"}
+    {"_id":"publication_9","_type":"publication","belongsTo":"scholar","title":"Lindsay, Arto. ","publication":"Grove Dictionary of American Music","volume":"2nd ed.,Oxford University Press, 2013"}
+    {"_id":"publication_10","_type":"publication","belongsTo":"scholar","title":"Driving Deeper into That Thing: The Humanity of Heiner Goebbels’sStifters Dinge. ","publication":"TDR/The Drama Review","volume":"(T207) 54, 2: 2010"}
+    {"_id":"publication_11","_type":"publication","belongsTo":"scholar","title":"Review of FLUXCONCERT 20080925-27.","publication":"Women & Performance","volume":" 19, 3: 2009"}
+  ]}

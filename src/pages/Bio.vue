@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <header class="p-4">
-      <Heading>
+      <Heading :display="true">
         Bio
       </Heading>
     </header>
@@ -35,7 +35,6 @@ export default {
     };
   },
   created() {
-    console.log(this.$page.bios.edges);
     this.bio = this.$page.bios.edges.map((obj) => obj.node)[0];
   },
 };

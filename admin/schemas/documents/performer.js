@@ -11,8 +11,8 @@ export default {
       hidden: true,
     },
     {
-      title: 'Description',
-      name: 'description',
+      title: 'Body',
+      name: 'body',
       type: 'blockContent',
     },
     {

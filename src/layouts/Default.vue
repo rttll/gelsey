@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full pt-24 mx-auto font-sans text-gray-800"
+    class="w-full pt-32 mx-auto font-sans text-gray-800"
     style="max-width:1000px"
   >
     <Header />

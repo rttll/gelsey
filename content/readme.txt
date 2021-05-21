@@ -10,6 +10,7 @@ copy output to out.json
 sanity dataset import ../content/{DIR}/parsed.json production --replace
 
 sanity dataset import ../content/events/parsed.json production --replace
+sanity dataset import ../content/pubs/parsed.json production --replace
 
 
 --missing

@@ -1,6 +1,6 @@
 export default {
-  title: 'Performance',
-  name: 'performance',
+  title: 'Publications',
+  name: 'publication',
   type: 'object',
   fields: [
     {
@@ -12,11 +12,6 @@ export default {
       title: 'Link',
       name: 'link',
       type: 'url',
-    },
-    {
-      title: 'Description',
-      name: 'description',
-      type: 'blockContent',
     },
   ],
 };

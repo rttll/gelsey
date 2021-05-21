@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed top-0 left-0 z-40 flex items-center justify-between w-full p-4 bg-white"
+    class="fixed top-0 left-0 z-40 flex items-center justify-between w-full p-4 "
   >
     <g-link class="block" to="/">
       <Logo class="h-24" />

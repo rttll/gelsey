@@ -7,6 +7,7 @@ require('~/main.css');
 https://fontsource.org/fonts/libre-franklin
 */
 import '@fontsource/libre-franklin/600.css';
+import '@fontsource/libre-franklin/500.css';
 import '@fontsource/libre-franklin/400.css';
 
 import DefaultLayout from '~/layouts/Default.vue';
