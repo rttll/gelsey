@@ -57,15 +57,15 @@
 </template>
 
 <script>
-import albums from '~/assets/svg/white/albums.svg';
-import composer from '~/assets/svg/white/composer.svg';
-import performer from '~/assets/svg/white/performer.svg';
-import press from '~/assets/svg/white/press.svg';
-import scholar from '~/assets/svg/white/scholar.svg';
-import videos from '~/assets/svg/white/videos.svg';
-import bio from '~/assets/svg/white/bio.svg';
-import events from '~/assets/svg/white/events.svg';
-import contact from '~/assets/svg/white/contact.svg';
+import albums from '~/assets/nav/white/albums.svg';
+import composer from '~/assets/nav/white/composer.svg';
+import performer from '~/assets/nav/white/performer.svg';
+import press from '~/assets/nav/white/press.svg';
+import scholar from '~/assets/nav/white/scholar.svg';
+import videos from '~/assets/nav/white/videos.svg';
+import bio from '~/assets/nav/white/bio.svg';
+import events from '~/assets/nav/white/events.svg';
+import contact from '~/assets/nav/white/contact.svg';
 
 export default {
   metaInfo: {
