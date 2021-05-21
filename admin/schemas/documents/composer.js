@@ -1,6 +1,6 @@
 export default {
-  title: 'Bio',
-  name: 'bio',
+  title: 'Composer',
+  name: 'composer',
   type: 'document',
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
@@ -17,6 +17,6 @@ export default {
     },
   ],
   initialValue: {
-    title: 'Bio',
+    title: 'Composer',
   },
 };

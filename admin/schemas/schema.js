@@ -12,11 +12,14 @@ import quote from './documents/quote';
 import event from './documents/event';
 import event_archive from './documents/event_archive';
 import work from './documents/work';
+import composer from './documents/composer';
+import performer from './documents/performer';
 
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
 import address from './objects/address';
+import performance from './objects/performance';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,11 +32,14 @@ export default createSchema({
     album,
     video,
     address,
+    performer,
+    performance,
     event_archive,
     event,
     quote,
     press,
     work,
+    composer,
     blockContent,
     blockImage,
     link,
