@@ -11,6 +11,7 @@ dist
 admin/*
 !admin/schemas
 !admin/sanity.json
+!admin/deskStructure.js
 
 
 .env
