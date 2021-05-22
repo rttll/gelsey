@@ -14,6 +14,7 @@ module.exports = {
       display: ['Fraunces72pt', 'Georgia', 'Cambria', 'serif'],
     },
     screens: {
+      container: [{ min: '1050px' }],
       'album-md': '450px',
       'video-md': '1000px',
       ...defaultTheme.screens,
