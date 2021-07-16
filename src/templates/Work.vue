@@ -1,9 +1,16 @@
 <template>
   <Layout>
-    <Heading>
+    <Heading :display="true">
       {{work.title}}
-
     </Heading>
+    <section class="pb-20">
+      <div
+        class="text-base leading-loose md:w-2/3 md:pr-20"
+        v-if="work._rawDescription"
+      >
+        <BlockContent :blocks="work._rawDescription" />
+      </div>
+    </section>
   </Layout>
   </div>
 </template>
