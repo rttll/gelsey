@@ -28,7 +28,18 @@ export default {
       title: 'Date',
       name: 'date',
       type: 'datetime',
-      description: 'Invisible field used to order the events.',
+      description: 'Used to order events / archive (not visible on site)',
+      options: {
+        // dateFormat: 'ddd. MMMM DD, YYYY',
+        // timeFormat: 'h:mm a',
+        // timeStep: '15',
+      },
+    },
+    {
+      title: 'End Date',
+      name: 'end_date',
+      type: 'datetime',
+      description: 'Used to order / archive, if mul (not visible on site)',
       options: {
         // dateFormat: 'ddd. MMMM DD, YYYY',
         // timeFormat: 'h:mm a',
@@ -49,9 +60,9 @@ export default {
     {
       title: 'Address',
       name: 'address',
-      type: 'array',
-      of: [{ type: 'address' }],
-      validation: (Rule) => Rule.max(1),
+      type: 'reference',
+      to: [{ type: 'address' }],
+      // validation: (Rule) => Rule.max(1),
     },
   ],
   orderings: [

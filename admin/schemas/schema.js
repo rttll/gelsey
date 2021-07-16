@@ -16,11 +16,11 @@ import composer from './documents/composer';
 import performer from './documents/performer';
 import scholar from './documents/scholar';
 import contact from './documents/contact';
+import address from './documents/address';
 
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
-import address from './objects/address';
 import performance from './objects/performance';
 import publication from './objects/publication';
 
