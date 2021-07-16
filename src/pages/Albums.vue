@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <header class="p-4">
-      <Heading>
+      <Heading :display="true">
         Albums
       </Heading>
     </header>

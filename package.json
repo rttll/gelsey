@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "open http://localhost:8080 && gridsome develop",
+    "start": "gridsome develop",
     "explore": "gridsome explore",
     "build": "gridsome build",
     "favicons": "node ./util/favicons"

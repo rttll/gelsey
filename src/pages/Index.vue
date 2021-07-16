@@ -1,6 +1,6 @@
 <template>
   <Layout class="">
-    <div class="p-0 pt-6">
+    <div class="px-4 pt-6 md:pt-0 md:px-14">
       <div
         class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
       >

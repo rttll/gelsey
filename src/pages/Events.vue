@@ -1,18 +1,20 @@
 <template>
   <Layout>
     <header class="p-4">
-      <Heading>
+      <Heading :display="true">
         Events
       </Heading>
     </header>
     <section class="p-4 pt-10">
       <article v-for="event in currentEvents" class="" :key="event.id">
         <header>
-          <h3 class="font-semibold text-gray-600 uppercase">
+          <h3
+            class="pb-2 mb-6 text-lg font-semibold text-gray-600 uppercase border-b border-gray-200"
+          >
             {{ event.title }}
           </h3>
         </header>
-        <div class="flex mb-20 space-x-10 border-b border-gray-400 pb-9">
+        <div class="flex mb-20 space-x-10 pb-9">
           <div class="w-1/3 space-y-2">
             <p>{{ event.date_display }}</p>
             <span
