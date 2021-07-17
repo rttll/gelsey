@@ -19,7 +19,8 @@
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
     "gridsome": "^0.7.23",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.0.4",
+    "vue-icon-packs": "^1.1.2"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",

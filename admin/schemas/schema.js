@@ -17,6 +17,7 @@ import performer from './documents/performer';
 import scholar from './documents/scholar';
 import contact from './documents/contact';
 import address from './documents/address';
+import social_link from './documents/social_link';
 
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
@@ -49,5 +50,6 @@ export default createSchema({
     blockContent,
     blockImage,
     link,
+    social_link,
   ]),
 });

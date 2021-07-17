@@ -118,7 +118,6 @@ export default () =>
                 ),
             ])
         ),
-
       S.divider(),
       S.listItem()
         .title('Addresses')
@@ -128,7 +127,14 @@ export default () =>
             .title('Addresses')
             .filter('_type == "address"')
         ),
-      S.divider(),
+      S.listItem()
+        .title('Social Links')
+        // .icon(Music)
+        .child(
+          S.documentList()
+            .title('Social Links')
+            .filter('_type == "social_link"')
+        ),
       S.listItem()
         .title('Event Archive')
         // .icon(Music)

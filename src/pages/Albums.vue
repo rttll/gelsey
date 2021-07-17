@@ -1,9 +1,10 @@
 <template>
   <Layout>
-    <header class="p-4">
+    <header class="flex items-baseline justify-between p-4">
       <Heading :display="true">
         Albums
       </Heading>
+      <Social />
     </header>
     <section
       class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
@@ -42,9 +43,10 @@
 
 <script>
 import Album from '../components/Album';
+import Social from '~/components/Social';
 export default {
   name: 'Albums',
-  components: { Album },
+  components: { Album, Social },
   computed: {
     albums() {
       return this.$page.albums.edges.map((obj) => obj.node);
