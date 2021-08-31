@@ -118,8 +118,23 @@ export default () =>
                 ),
             ])
         ),
-
       S.divider(),
+      S.listItem()
+        .title('Addresses')
+        // .icon(Music)
+        .child(
+          S.documentList()
+            .title('Addresses')
+            .filter('_type == "address"')
+        ),
+      S.listItem()
+        .title('Social Links')
+        // .icon(Music)
+        .child(
+          S.documentList()
+            .title('Social Links')
+            .filter('_type == "social_link"')
+        ),
       S.listItem()
         .title('Event Archive')
         // .icon(Music)

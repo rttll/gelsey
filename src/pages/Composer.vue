@@ -19,11 +19,12 @@
           </div>
           <div
             class="text-base leading-loose md:w-2/3 md:pr-20"
-            v-if="comp._rawDescription"
+            v-if="comp._rawShort_description"
           >
-            <BlockContent :blocks="comp._rawDescription" />
-            <div v-if="comp.link">
-              <a :href="comp.link">More &rarr;</a>
+            <BlockContent :blocks="comp._rawShort_description" />
+            <div  class="flex justify-end">
+              <a v-if="comp.external_link" :href="comp.external_link">More &rarr;</a>
+              <g-link v-else :to="comp.slug">More &rarr;</g-link>
             </div>
           </div>
         </div>
@@ -45,7 +46,8 @@ query {
         id
         title
         year 
-        link
+        external_link
+        _rawShort_description
         _rawDescription
       }
     }

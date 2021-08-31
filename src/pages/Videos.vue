@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <section>
-      <Heading>Videos </Heading>
+      <Heading :display="true">Videos </Heading>
       <div
         class="flex flex-col items-start flex-initial p-4 space-y-4 video-md:space-y-0 video-md:flex-row video-md:pt-20 video-md:space-x-10"
       >

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full pt-32 mx-auto font-sans text-gray-800"
+    class="w-full px-4 pt-32 mx-auto font-sans text-gray-800 container:px-0"
     style="max-width:1000px"
   >
     <Header />
@@ -32,10 +32,7 @@ export default {
 
 <style>
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.5;
 }
 </style>

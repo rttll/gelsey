@@ -1,40 +1,27 @@
 <template>
-  <Layout>
-    <Heading :display="true">
-      Contact
-    </Heading>
-    <section class="flex p-4 space-x-1">
-      <span v-for="link in links" :key="link.id">
-        <component class="text-4xl" :is="link.icon[0]" />
-      </span>
-    </section>
-    <section class="p-4 ">
-      <BlockContent v-if="body" :blocks="body._rawBody" />
-    </section>
-  </Layout>
+  <div class="flex p-4 space-x-1">
+    <span v-for="link in links" :key="link.id">
+      <a :href="link.link" :title="link.name">
+        <component class="text-3xl" :is="link.icon[0]" />
+      </a>
+    </span>
+  </div>
 </template>
 
-<page-query>
+<static-query>
   query {
-    contact: allSanityContact(limit: 1) {
+    social: allSanitySocialLink(sort: [{order: DESC}]) {
       edges {
         node {
           id
-          _rawBody(resolveReferences: {maxDepth: 5})
-        }
-      }
-    } 
-    social: allSanitySocialLink {
-      edges {
-        node {
-          id
-          name 
+          name
+          link 
           icon
         }
       }
     } 
   }
-</page-query>
+</static-query>
 
 <script>
 // import { LSpotify as spotify } from 'vue-icon-packs/bx'
@@ -46,7 +33,6 @@ export default {
   components: { spotify, bandcamp, apple }, 
   data() {
     return {
-      body: null,
       links: [],
       list: [
         {title: 'Spotify', value: 'spotify' },
@@ -60,13 +46,7 @@ export default {
     };
   },
   created() {
-    this.body = this.$page.contact.edges.map((obj) => obj.node)[0];
-    this.links = this.$page.social.edges.map((obj) => {
-      // for (let item of this.list) {
-      //   obj.node[item.value] = obj.node.icon[0] === item.value
-      // }
-      return obj.node
-    })
+    this.links = this.$static.social.edges.map((obj) => obj.node )
   },
 };
 </script>

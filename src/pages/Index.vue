@@ -1,12 +1,12 @@
 <template>
   <Layout class="">
-    <div class="p-0 pt-6">
+    <div class="px-4 pt-6 md:pt-0 md:px-14">
       <div
         class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
       >
         <div class="text-center border-r border-gray-200 border-dashed">
           <g-link to="/bio/" class="block w-auto h-12 p-2 small">
-            <bio />
+            <component is="bio" />
           </g-link>
         </div>
         <div class="text-center border-r border-gray-200 border-dashed">
@@ -20,7 +20,7 @@
           </g-link>
         </div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 le-grid">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         <div class="border-b border-r border-dashed gorder-gray-200">
           <g-link to="/composer/">
             <composer />

@@ -17,6 +17,8 @@ import ChevronDown from '~/assets/icons/chevron-down.svg';
 import ChevronUp from '~/assets/icons/chevron-up.svg';
 import ExternalLink from '~/assets/icons/external-link.svg';
 
+import VueSource from 'vue-source'
+
 export default function(Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout);
   Vue.component('Heading', Heading);
@@ -24,4 +26,6 @@ export default function(Vue, { router, head, isClient }) {
   Vue.component('ChevronDown', ChevronDown);
   Vue.component('ChevronUp', ChevronUp);
   Vue.component('ExternalLink', ExternalLink);
+
+  Vue.use(VueSource)
 }

@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "open http://localhost:8080 && gridsome develop",
+    "start": "gridsome develop",
     "explore": "gridsome explore",
     "build": "gridsome build",
     "favicons": "node ./util/favicons"
@@ -19,13 +19,17 @@
     "@vimeo/player": "^2.15.0",
     "autoprefixer": "^9",
     "gridsome": "^0.7.23",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.0.4",
+    "vue-icon-packs": "^1.1.2"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "favicons": "^6.2.2",
     "gridsome-source-sanity": "^1.0.5",
+    "node-sass": "^6.0.1",
     "sanity-blocks-vue-component": "0.1.0",
+    "sass-loader": "^10.1.1",
+    "vue-source": "^1.1.1",
     "vue-svg-loader": "^0.16.0"
   }
 }

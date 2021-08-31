@@ -29,12 +29,35 @@ export default {
 .content a {
   text-decoration: underline;
 }
-.content p {
-  min-height: 1px;
+.content a:hover {
+  text-decoration: none;
+}
+
+.content blockquote {
+  @apply bg-gray-50 p-8;
+  font-style: italic;
+}
+
+.content p:empty {
   padding: 1rem 0;
 }
 
 .content p:first-child {
   padding-top: 0;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  @apply text-2xl text-gray-900;
+}
+
+.content ul {
+  padding-left: 1rem;
+}
+
+.content li {
+  list-style: disc;
 }
 </style>
