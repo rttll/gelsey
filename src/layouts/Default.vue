@@ -1,7 +1,7 @@
 <template>
   <div
-    class="w-full px-4 pt-32 mx-auto font-sans text-gray-800 container:px-0"
-    style="max-width:1000px"
+    class="w-full px-4 py-32 mx-auto font-sans text-gray-800 container:px-0"
+    :style="style"
   >
     <Header />
       <transition name="fade" appear>
@@ -26,11 +26,18 @@ import Header from '../components/base/Header.vue';
 export default {
   name: 'Default',
   components: { Header },
+  props: ['wide'],
   data() {
     return {
       menuActive: false,
     };
   },
+  computed: {
+    style() {
+      let width = this.wide ? '1200px' : '1000px'
+      return `max-width: ${width}`
+    }
+  }
 };
 </script>
 

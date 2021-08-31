@@ -1,7 +1,7 @@
 <template>
-  <li class="flex items-start space-x-2">
+  <li class="flex flex-col items-start video-md:space-x-2 video-md:flex-row">
     <div
-      class="w-1/2 bg-pink-400 cursor-pointer"
+      class="w-full bg-pink-400 cursor-pointer video-md:w-1/2"
       :style="style"
       @click.prevent="$emit('clicked')"
       >

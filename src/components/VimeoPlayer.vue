@@ -9,13 +9,13 @@ import Player from '@vimeo/player'
 export default {
   name: 'VimeoPlayer',
   props: {
+    autoplay: Boolean,
     active: Boolean,
     video: Object
   },  
   data() {
     return {
       player: null,
-      autoplay: false
     }
   },
   computed: {
@@ -31,28 +31,26 @@ export default {
   },
   methods: {
     onPlayerLoaded() {
-      if (this.autoplay) this.player.play()
-      else this.autoplay = true // todo: this is activating on first load, should not
+      // if (this.autoplay) this.player.play()
     },
     createPlayer() {
       this.player = new Player('vimeo-player', {id: parseInt(this.id), responsive: true})
       this.player.on('loaded', this.onPlayerLoaded)
     }, 
     setVideo: async function() {
-      console.log('set vimdeo')
       const currentId = await this.player.getVideoId()
-      if (currentId === parseInt(this.id)) {
-        this.player.play()
-      } else {
+      console.log(currentId !== parseInt(this.id))
+      if (currentId !== parseInt(this.id)) {
         this.player.loadVideo(parseInt(this.id))
+        this.player.play()
+      } else if (this.autoplay) {
+        this.player.play()
       }
     }
   },
   created() {
-    console.log('vimeo created')
   },
   mounted() {
-    console.log('veimdeo mounted')
     if (!this.player) this.createPlayer()
     this.setVideo()  
   },
