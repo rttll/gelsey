@@ -4,7 +4,11 @@
     style="max-width:1000px"
   >
     <Header />
-    <slot />
+      <transition name="fade" appear>
+        <main>
+          <slot />
+        </main>
+      </transition>
   </div>
 </template>
 
@@ -31,8 +35,16 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-}
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .fade-enter-active {
+    transition: opacity .35s;
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
 </style>

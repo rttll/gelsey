@@ -57,5 +57,11 @@ export default {
     {
       type: 'blockImage',
     },
+    {
+      type: 'vimeo'
+    },
+    {
+      type: 'youtube'
+    },
   ],
 };

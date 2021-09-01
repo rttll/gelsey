@@ -7,17 +7,22 @@
 <script>
 import SanityBlocks from 'sanity-blocks-vue-component';
 import BlockImage from './BlockImage';
+import BlockVimeo from './BlockVimeo';
+import BlockYoutube from './BlockYoutube';
+
 export default {
   name: 'BlockContent',
   props: {
     blocks: Array,
   },
-  components: { SanityBlocks, BlockImage },
+  components: { SanityBlocks, BlockImage, BlockVimeo, BlockYoutube, },
   data() {
     return {
       serializers: {
         types: {
           blockImage: BlockImage,
+          vimeo: BlockVimeo,
+          youtube: BlockYoutube,
         },
       },
     };
