@@ -24,6 +24,8 @@ import blockImage from './objects/blockImage';
 import link from './objects/link';
 import performance from './objects/performance';
 import publication from './objects/publication';
+import vimeo from './objects/vimeo';
+import youtube from './objects/youtube';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -51,5 +53,7 @@ export default createSchema({
     blockImage,
     link,
     social_link,
+    vimeo,
+    youtube,
   ]),
 });
