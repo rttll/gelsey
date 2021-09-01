@@ -1,12 +1,24 @@
 <template>
   <Layout>
-    <Heading :display="true">
-      Composer
-    </Heading>
-    <div v-if="body" class="p-8 my-12 mb-24 shadow-sm bg-gray-50">
-      <BlockContent :blocks="body" />
+      <div class="relative" id="heading-wrap">
+    <Container>
+      <Heading :display="true">
+        Composer
+      </Heading>
+    </Container>
+      </div>
+    <div v-if="body" class="p-8 py-32 shadow-sm text-hite bg-gray-50">
+      <Container>
+        <BlockContent :blocks="body" />
+      </Container>
     </div>
-    <section>
+    <Container>
+      <header class="my-12">
+        <Heading :display="true">
+          Works
+        </Heading>
+      </header>
+
       <article v-for="comp in work" class="" :key="comp.id">
         <div class="flex mb-20 space-x-10 pb-9">
           <div class="w-1/3 space-y-2">
@@ -29,7 +41,7 @@
           </div>
         </div>
       </article>
-    </section>
+    </Container>
   </Layout>
 </template>
 
@@ -79,4 +91,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  #heading-wwrap:after {
+    content: '';
+    background: rgba(75, 85, 99, 1);
+    display: block;
+    width: 100%;
+    height: 14px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    /* transform: translateY(14px) */
+  }
+</style>

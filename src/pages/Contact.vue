@@ -1,16 +1,18 @@
 <template>
   <Layout>
-    <Heading :display="true">
-      Contact
-    </Heading>
-    <section class="flex p-4 space-x-1">
-      <span v-for="link in links" :key="link.id">
-        <component class="text-4xl" :is="link.icon[0]" />
-      </span>
-    </section>
-    <section class="p-4 ">
-      <BlockContent v-if="body" :blocks="body._rawBody" />
-    </section>
+    <Container>
+      <Heading :display="true">
+        Contact
+      </Heading>
+      <section class="flex p-4 space-x-1">
+        <span v-for="link in links" :key="link.id">
+          <component class="text-4xl" :is="link.icon[0]" />
+        </span>
+      </section>
+      <section class="p-4 ">
+        <BlockContent v-if="body" :blocks="body._rawBody" />
+      </section>
+    </Container>
   </Layout>
 </template>
 

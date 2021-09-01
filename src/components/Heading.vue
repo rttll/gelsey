@@ -38,7 +38,7 @@ export default {
     if (this.tag) this.el = this.tag;
     if (this.display) {
       this.classes =
-        'text-5xl pb-4 font-thin text-gray-400 uppercase md:text-7xl font-display';
+        'text-5xl font-thi text-gray-600 uppercase md:text-8xl font-display';
     }
   },
 };

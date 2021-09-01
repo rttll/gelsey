@@ -33,14 +33,14 @@ export default {
   methods: { 
     loadVideo() {
       this.player.loadVideoById(this.id, 0, "large")
+      // this.player.pauseVideo()
     },
     createPlayer() {
       this.player = new YT.Player('player', {
         width: this.width,
         height: this.height,
-        autoplay: false,
         playerVars: {
-          autoplay: false,
+          autoplay: 0,
           controls: 1,
           iv_load_policy: 3,
           modestbranding: 1,

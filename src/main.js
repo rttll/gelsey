@@ -11,6 +11,7 @@ import '@fontsource/libre-franklin/500.css';
 import '@fontsource/libre-franklin/400.css';
 
 import DefaultLayout from '~/layouts/Default.vue';
+import Container from '~/components/Container.vue';
 import Heading from '~/components/Heading.vue';
 import BlockContent from '~/components/BlockContent.vue';
 import ChevronDown from '~/assets/icons/chevron-down.svg';
@@ -22,6 +23,7 @@ import VueSource from 'vue-source'
 
 export default function(Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout);
+  Vue.component('Container', Container);
   Vue.component('Heading', Heading);
   Vue.component('BlockContent', BlockContent);
   Vue.component('ChevronDown', ChevronDown);
