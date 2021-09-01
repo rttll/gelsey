@@ -46,12 +46,4 @@ export default {
     margin: 0;
     padding: 0;
   }
-  .fade-enter-active {
-    transition: opacity .35s;
-  }
-
-  .fade-enter {
-    opacity: 0;
-  }
-
 </style>

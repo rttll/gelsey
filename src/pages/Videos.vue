@@ -101,18 +101,3 @@ export default {
   },
 };
 </script>
-
-<style>
-  .fade-enter-active {
-    transition: all 0.4s;
-  }
-  .fade-enter {
-    opacity: 0;
-    /* margin-left: 90px; */
-  }
-  .fade-leave-active {
-    transition: all 0.4s;
-    opacity: 0;
-    /* margin-left: -100px; */
-  }
-</style>
