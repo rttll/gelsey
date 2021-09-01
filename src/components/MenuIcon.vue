@@ -1,7 +1,8 @@
 <template>
   <a
     href="#"
-    :class="`${active ? 'bg-gray-100' : 'bg-gray-50'} relative hover:bg-gray-100 transition-colors duration-300 z-50 flex p-4 py-6 rounded-full cursor-pointer`"
+    :class="`${active ? 'bg-gray-100' : 'bg-gray-50'} relative hover:bg-gray-100 transition-colors duration-300 flex p-4 py-6 rounded-full cursor-pointer`"
+    style="z-index: 999999999"
     @click.prevent="clicked"
   >
     <div

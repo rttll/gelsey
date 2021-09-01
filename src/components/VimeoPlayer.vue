@@ -44,7 +44,7 @@ export default {
         this.player.loadVideo(parseInt(this.id))
         this.player.play()
       } else if (this.autoplay) {
-        this.player.play()
+        // this.player.play()
       }
     }
   },

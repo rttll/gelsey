@@ -38,7 +38,9 @@ export default {
       this.player = new YT.Player('player', {
         width: this.width,
         height: this.height,
+        autoplay: false,
         playerVars: {
+          autoplay: false,
           controls: 1,
           iv_load_policy: 3,
           modestbranding: 1,
