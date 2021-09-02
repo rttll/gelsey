@@ -12,6 +12,9 @@
           <BlockContent :blocks="work._rawDescription" />
         </div>
       </section>
+      <section class="py-12">
+        <g-link to="/composer">&larr; Back to Composer</g-link>
+      </section>
     </Container>
   </Layout>
   </div>

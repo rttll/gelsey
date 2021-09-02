@@ -1,12 +1,16 @@
 <template>
   <Layout>
-    <Container>
       <Heading :display="true">
-        Scholar
+        <Container>Scholar</Container>
       </Heading>
-      <div v-if="body" class="p-8 my-12 mb-24 shadow-sm bg-gray-50">
-        <BlockContent :blocks="body" />
-      </div>
+    <div v-if="body" class="py-16">
+      <Container>
+        <ContentContainer>
+          <BlockContent :blocks="body" />
+        </ContentContainer>
+      </Container>
+    </div>
+    <Container>
       <section>
         <article v-for="pub in publications" class="" :key="pub.id">
           {{ pub.title }}

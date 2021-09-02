@@ -48,6 +48,10 @@ export default {
           to: '/scholar'
         },
         {
+          text: 'Albums',
+          to: '/albums'
+        },
+        {
           text: 'Videos',
           to: '/videos'
         },

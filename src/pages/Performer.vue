@@ -1,16 +1,27 @@
 <template>
   <Layout>
+    <Heading :display="true">
+      <Container>Performer</Container>
+    </Heading>
+    <div v-if="body" class="py-16">
+      <Container>
+        <ContentContainer>
+          <BlockContent :blocks="body" />
+        </ContentContainer>
+      </Container>
+    </div>
+    
+    <header class="my-12">
+        <Heading :display="true">
+          <Container>Performances</Container>
+        </Heading>
+      </header>
+    
     <Container>
-      <Heading :display="true">
-        Performer
-      </Heading>
-      <div v-if="body" class="p-8 my-12 mb-24 shadow-sm bg-gray-50">
-        <BlockContent :blocks="body" />
-      </div>
-      <section>
+      <section class="py-20">
         <article v-for="perf in performances" class="" :key="perf.id">
-          <div class="flex mb-20 space-x-10 pb-9">
-            <div class="w-1/3 space-y-2">
+          <div class="flex flex-col mb-20 space-y-4 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+            <div class="space-y-2 md:w-1/3">
               <header class="text-rwight">
                 <Heading tag="h3">
                   {{ perf.title }}

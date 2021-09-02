@@ -1,13 +1,12 @@
 <template>
   <Layout>
-    <Container>
-      <header class="p-4">
-        <Heading :display="true">
-          Press
-        </Heading>
-      </header>
+    <header class="py-4">
+      <Heading :display="true">
+        <Container>Press</Container>
+      </Heading>
+    </header>
 
-      <section class="p-4 my-4 border-t border-b border-gray-300 border-wb">
+      <section class="my-4 border-b border-gray-300">
         <div class="flex flex-col items-center justify-center ">
           <BlockQuote :quote="quotes[0]._rawQuote" :cite="quotes[0].cite" />
         </div>
@@ -26,7 +25,7 @@
             :quote="quote._rawQuote"
           </div>
         </transition>
-        <p class="flex justify-end">
+        <p class="flex justify-end p-4">
           <a
             class="flex items-center text-xs"
             href="#"
@@ -38,9 +37,10 @@
           </a>
         </p>
       </section>
+    <Container>
 
       <section class="flex flex-col md:flex-row md:-ml-4">
-        <article v-for="col in grid" class="w-full px-8 md:w-1/4">
+        <article v-for="col in grid" class="w-full md:px-8 md:w-1/4">
           <div v-for="project in col" class="py-8 border-b border-gray-300">
             <h3 class="pb-2 font-semibold text-gray-600 uppercase">
               {{ project.title }}
@@ -48,10 +48,12 @@
             <ul>
               <li v-for="article in project.articles">
                 <a
-                  class="block py-1 space-x-2 font-normal text-gray-500 cursor-pointer hover:underline"
+                  class="flex py-1 space-x-1 text-sm font-normal text-gray-500 transform -translate-x-1 cursor-pointer"
                   :href="article.href"
                 >
-                  <span>{{ article.text }}</span>
+                    <span class="text-xs text-gray-300"><ArrowUpRight /></span>
+                  <span>
+                     {{ article.text }}</span>
                 </a>
               </li>
             </ul>

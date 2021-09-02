@@ -26,6 +26,10 @@ export default {
   name: 'Heading',
   props: {
     display: Boolean,
+    border: {
+      type: Boolean,
+      default: true
+    },
     tag: String,
   },
   data() {
@@ -38,10 +42,25 @@ export default {
     if (this.tag) this.el = this.tag;
     if (this.display) {
       this.classes =
-        'text-5xl font-thi text-gray-600 uppercase md:text-8xl font-display';
+        'text-5xl relative text-gray-600 uppercase md:text-8xl font-display';
+      if (this.border) this.classes += ' border-b border-gray-200'
     }
   },
 };
 </script>
 
-<style></style>
+<style>
+  .display:after {
+    content: '';
+    background: rgba(75, 85, 99, 1);
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    /* transform: translateY(14px) */
+  }
+</style>
+

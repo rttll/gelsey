@@ -8,8 +8,8 @@
     </div>
     <div class="h-full overflow-hidden">
       <a
-        href="/"
-        class="relative block cursor-pointer"
+        href="#"
+        class="relative block pt-1 cursor-pointer md:pt-0"
         @click.prevent="$emit('clicked')"
       >
         <span class="block text-base font-medium">{{video.title}}</span>

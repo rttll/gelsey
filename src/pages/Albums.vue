@@ -1,28 +1,40 @@
 <template>
   <Layout>
-    <header class="flex items-baseline justify-between p-4">
-      <Heading :display="true">
-        Albums
-      </Heading>
-      <Social />
-    </header>
-    <section
-      class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
-    >
-      <Album
-        v-for="album in albums.filter(a => !a.other)"
-        :album="album" :key="album.id" 
-      />
-    </section>
-    <section class="pb-20">
-      <h3 class="p-4"> With other people</h3>
-      <div class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row">
+      <header class="mb-16">
+        <Heading :display="true">
+          <Container>
+            <div class="flex items-baseline justify-between">
+              <span>Albums</span>
+              <Social />
+            </div>
+          </Container>
+        </Heading>
+      </header>
+    <Container>
+      <section
+        class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
+      >
         <Album
-          v-for="album in albums.filter(a => a.other)"
-          :album="album" :small="true" :key="album.id" 
+          v-for="album in albums.filter(a => !a.other)"
+          :album="album" :key="album.id" 
         />
-      </div>
-    </section>
+      </section>
+    </Container>
+      <section class="pb-20">
+        <header class="my-16 md:my-32">
+          <Heading :display="true">
+            <Container>Collaborations</Container>
+          </Heading>
+        </header>
+      <Container>
+        <div class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row">
+          <Album
+            v-for="album in albums.filter(a => a.other)"
+            :album="album" :small="true" :key="album.id" 
+          />
+        </div>
+    </Container>
+      </section>
   </Layout>
 </template>
 

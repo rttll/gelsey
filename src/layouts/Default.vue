@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full px-4 mx-auto font-sans text-gray-800 pt-36 container:px-0"
+    class="w-full mx-auto font-sans text-gray-800 pt-36 container:px-0"
   >
     <Header />
     <transition name="fade" appear>

@@ -1,28 +1,28 @@
 <template>
   <Layout>
-      <div class="relative" id="heading-wrap">
-    <Container>
+    <div>
       <Heading :display="true">
-        Composer
+        <Container>Composer</Container>
       </Heading>
-    </Container>
-      </div>
-    <div v-if="body" class="p-8 py-32 shadow-sm text-hite bg-gray-50">
+    </div>
+    <div v-if="body" class="py-16" id="fuckkkkk">
       <Container>
-        <BlockContent :blocks="body" />
+        <ContentContainer>
+          <BlockContent :blocks="body" />
+        </ContentContainer>
       </Container>
     </div>
-    <Container>
-      <header class="my-12">
-        <Heading :display="true">
-          Works
-        </Heading>
-      </header>
+    <header class="my-12">
+      <Heading :display="true">
+        <Container>Works</Container>
+      </Heading>
+    </header>
 
+    <Container>
       <article v-for="comp in work" class="" :key="comp.id">
-        <div class="flex mb-20 space-x-10 pb-9">
-          <div class="w-1/3 space-y-2">
-            <header class="text-rwight">
+        <div class="flex flex-col mb-20 space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+          <div class="w-full space-y-2 md:w-1/3 ">
+            <header>
               <Heading tag="h3">
                 {{ comp.title }}
               </Heading>
@@ -30,7 +30,7 @@
             </header>
           </div>
           <div
-            class="text-base leading-loose md:w-2/3 md:pr-20"
+            class="w-full space-y-4 text-base leading-loose md:w-2/3 md:pr-20"
             v-if="comp._rawShort_description"
           >
             <BlockContent :blocks="comp._rawShort_description" />
@@ -68,6 +68,8 @@ query {
 </page-query>
 
 <script>
+const { default: ContentContainer }=require("../components/ContentContainer.vue");
+
 export default {
   name: 'Composer',
   data() {

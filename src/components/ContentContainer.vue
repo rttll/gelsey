@@ -1,12 +1,14 @@
 <template>
-  <section class="px-8 mx-auto" style="max-width:1000px;">
+  <section
+    class="w-full leading-loose"
+    style="max-width:740px;">
     <slot />
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Container'
+  name: 'ContentContainer'
 }
 </script>
 

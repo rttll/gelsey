@@ -1,6 +1,6 @@
 <template>
   <blockquote
-    class="relative px-4 py-16 text-xl text-center text-gray-600 md:w-1/2 md:px-0"
+    class="relative py-16 text-lg text-center text-gray-600 md:text-xl md:w-1/2 md:px-0"
   >
     <!-- <span
       class="absolute pt-16 text-6xl text-gray-400"

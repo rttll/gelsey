@@ -1,9 +1,9 @@
 <template>
   <Layout>
+    <Heading :display="true">
+      <Container>Contact</Container>
+    </Heading>
     <Container>
-      <Heading :display="true">
-        Contact
-      </Heading>
       <section class="flex p-4 space-x-1">
         <span v-for="link in links" :key="link.id">
           <component class="text-4xl" :is="link.icon[0]" />
