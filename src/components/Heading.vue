@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 v-if="el === 'h1'" :class="classes">
+    <h1 v-if="el === 'h1'" :class="classes" class="break-all" style="hyphens: auto">
       <slot />
     </h1>
     <h2 v-if="el === 'h2'" :class="classes">
