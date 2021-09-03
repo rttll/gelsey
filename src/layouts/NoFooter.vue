@@ -1,10 +1,10 @@
 <template>
   <div
-    class="w-full mx-auto font-sans text-gray-800 pt-36 container:px-0"
+    class="w-full px-4 pt-32 mx-auto font-sans text-gray-800 container:px-0"
   >
     <Header />
     <transition name="fade" appear>
-      <main class="relative z-20 min-h-screen bg-white mx-aut"
+      <main class="relative z-20 bg-white"
       >
         <section
           class="mx-auto"
@@ -15,7 +15,6 @@
         </section>
       </main>
     </transition>
-    <Footer />
   </div>
 </template>
 
@@ -29,12 +28,10 @@ query {
 
 <script>
 import Header from '../components/base/Header.vue';
-import Footer from '../components/base/Footer.vue';
 
 export default {
-  name: 'Default',
-  components: { Header, Footer },
-  props: ['wide', 'container'],
+  name: 'NoFooter',
+  components: { Header },
   data() {
     return {
       menuActive: false,
@@ -42,8 +39,7 @@ export default {
   },
   computed: {
     style() {
-      let width = this.wide ? '1200px' : '1000px'
-      return this.container ? `max-width: ${width}` : ''
+      return `max-width: 1000px`
     }
   }
 };

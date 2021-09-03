@@ -26,4 +26,20 @@ export default {
       hidden: true,
     },
   ],
+  orderings: [
+    {
+      title: 'Order ASC',
+      name: 'orderDesc',
+      by: [
+        {field: 'order', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Order DESC',
+      name: 'orderDesc',
+      by: [
+        {field: 'order', direction: 'desc'}
+      ]
+    },
+  ]
 };

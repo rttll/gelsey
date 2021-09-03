@@ -1,16 +1,21 @@
 <template>
   <Layout>
-    <Heading :display="true">
-      {{work.title}}
-    </Heading>
-    <section class="pb-20">
-      <div
-        class="text-base leading-loose md:w-2/3 md:pr-20"
-        v-if="work._rawDescription"
-      >
-        <BlockContent :blocks="work._rawDescription" />
-      </div>
-    </section>
+    <Container>
+      <Heading :display="true">
+        {{work.title}}
+      </Heading>
+      <section class="pb-20 my-12">
+        <div
+          class="text-base leading-loose md:w-2/3 md:pr-20"
+          v-if="work._rawDescription"
+        >
+          <BlockContent :blocks="work._rawDescription" />
+        </div>
+      </section>
+      <section class="py-12">
+        <g-link to="/composer">&larr; Back to Composer</g-link>
+      </section>
+    </Container>
   </Layout>
   </div>
 </template>

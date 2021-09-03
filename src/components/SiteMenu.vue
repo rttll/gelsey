@@ -1,33 +1,25 @@
 <template>
   <div>
-    <MenuIcon @clicked="toggle" />
-    <transition name="slide-left">
+    
+    <div class="pt-2 pr-2">
+      <MenuIcon @clicked="toggle" />
+    </div>
+
+    <transition name="fade">
       <nav
         v-if="active"
-        class="fixed top-0 right-0 z-40 flex flex-col justify-center h-screen pl-20 overflow-x-hidden overflow-y-auto"
+        class="fixed inset-0 z-40 flex flex-col justify-center w-screen h-screen pl-20 overflow-x-hidden overflow-y-auto text-center bg-white"
+        style="z-index: 999999"
       >
-        <g-link class="link" to="/bio">
-          Bio
-        </g-link>
-        <g-link class="link" to="/events"> Events</g-link>
-        <g-link class="link" to="/composer">
-          Composer
-        </g-link>
-        <g-link class="link" to="/performer">
-          Performer
-        </g-link>
-        <g-link class="link" to="/scholar">
-          Scholar
-        </g-link>
-        <g-link class="link" to="/videos/">
-          Videos
-        </g-link>
-        <g-link class="link" to="/press/">
-          Press
-        </g-link>
-        <g-link class="link" to="/contact">
-          Contact
-        </g-link>
+
+        <template v-for="link in links" @click="linkClicked" >
+          <span v-if="link.to == $route.path" @click="toggle" class="block w-full p-4 py-2 pr-20 text-4xl text-gray-400 cursor-pointer link hover:text-gray-400">
+            {{ link.text }}
+          </span>
+          <g-link v-else class="block w-full p-4 py-2 pr-20 text-4xl text-gray-700 link hover:text-gray-400" :to="link.to">
+            {{ link.text }}
+          </g-link>
+        </template> 
       </nav>
     </transition>
   </div>
@@ -40,29 +32,66 @@ export default {
   data() {
     return {
       active: false,
-    };
+      links: [
+        {
+          text: 'Bio',
+          to: '/bio'
+        },
+        {
+          text: 'Events',
+          to: '/events'
+        },
+        {
+          text: 'Composer',
+          to: '/composer'
+        },
+        {
+          text: 'Performer',
+          to: '/performer'
+        },
+        {
+          text: 'Scholar',
+          to: '/scholar'
+        },
+        {
+          text: 'Albums',
+          to: '/albums'
+        },
+        {
+          text: 'Videos',
+          to: '/videos'
+        },
+        {
+          text: 'Press',
+          to: '/press'
+        },
+        {
+          text: 'Contact',
+          to: '/contact'
+        },
+      ]
+    }
   },
   components: { MenuIcon },
   methods: {
     toggle() {
       this.active = !this.active;
     },
+    linkClicked(e) {
+      console.log(e)
+    }
   },
 };
 </script>
 
 <style>
-.link {
-  @apply block p-4 py-2 pr-20 text-3xl text-right;
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
 }
 
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: 0.2s;
-  transform: translate3d(0px, 0, 0);
-}
-.slide-left-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter {
   opacity: 0;
-  transform: translate3d(50px, 0, 0);
 }
 </style>

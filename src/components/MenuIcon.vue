@@ -1,7 +1,8 @@
 <template>
   <a
     href="#"
-    :class="`relative z-50 flex p-4 pr-2 cursor-pointer`"
+    :class="`${active ? 'bg-gray-100' : 'bg-gray-50'} relative hover:bg-gray-100 transition-colors duration-300 flex p-4 py-6 rounded-full cursor-pointer`"
+    style="z-index: 999999999"
     @click.prevent="clicked"
   >
     <div
@@ -35,7 +36,7 @@ export default {
 
 <style>
 .menu span {
-  @apply transform transition-all origin-center duration-75 ease-in;
+  @apply transform transition-all origin-center duration-150 ease-in;
   height: 0.1rem;
 }
 

@@ -9,12 +9,16 @@
 export default {
   name: 'YTPlayer',
   props: {
+    autoplay: Boolean,
     active: Boolean,
     video: Object
   },
   data() {
     return {
-      player: null
+      player: null,
+      width: '640',
+      height: '360',
+      firstMount: false,
     }
   },
   computed: {
@@ -24,30 +28,31 @@ export default {
   },
   watch: {
     video(is, was) {
-      this.loadVideo()
+      this.cueVideo()
     }
   },
   methods: { 
-    loadVideo() {
-      this.player.loadVideoById(this.id, 0, "large")
+    cueVideo() {
+      this.player.cueVideoById(this.id, 0, "large")
     },
     createPlayer() {
       this.player = new YT.Player('player', {
-        height: '360',
-        width: '640',
+        width: this.width,
+        height: this.height,
         playerVars: {
+          autoplay: 0,
           controls: 1,
           iv_load_policy: 3,
-          modestbranding: 1
+          modestbranding: 1,
         },
         events: {
-          'onReady': this.loadVideo
+          'onReady': this.cueVideo
         }
       });
     },
     onYTReady() {
-      console.log('yt read play')
-      this.loadVideo()
+      this.cueVideo()
+      console.log('ready')
     },
     createScriptTag() {
       // onYouTubePlayerAPIReady() is called automatically by the API, and must be globally available
@@ -64,12 +69,22 @@ export default {
       tag.id = "youtube-api"
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);    
-    },    
+    },
+    setPlayerDimensions() {
+      let width = document.getElementById('player-container').clientWidth
+      let height = parseInt(width) * 0.5625
+      this.width = width
+      this.height = height
+      if (this.player) this.player.setSize(width, height)
+    }, 
   },
   mounted() {
+    this.setPlayerDimensions()
+    window.addEventListener('resize', this.setPlayerDimensions)
+    
     // We always create a new Player on mount, but only load the script once.
-    const firstMount = document.getElementById('youtube-api') === null
-    if (firstMount) {
+    this.firstMount = document.getElementById('youtube-api') === null
+    if (this.firstMount) {
 
       // Load script, which will create player in the
       // onYouTubePlayerAPIReady() callback

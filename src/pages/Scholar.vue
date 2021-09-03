@@ -1,16 +1,40 @@
 <template>
   <Layout>
-    <Heading :display="true">
-      Scholar
-    </Heading>
-    <div v-if="body" class="p-8 my-12 mb-24 shadow-sm bg-gray-50">
-      <BlockContent :blocks="body" />
+      <Heading :display="true">
+        <Container>Scholar</Container>
+      </Heading>
+    <div v-if="body" class="py-16">
+      <Container>
+        <ContentContainer>
+          <BlockContent :blocks="body" />
+        </ContentContainer>
+      </Container>
     </div>
-    <section>
-      <article v-for="pub in publications" class="" :key="pub.id">
-        {{ pub.title }}
-      </article>
-    </section>
+    <Container>
+      <section class="pb-56 space-y-4">
+        <article v-for="pub in publications" class="text-sm" :key="pub.id">
+          <template v-if="pub.link">
+            <a :href="pub.link" class="">
+              <span class="flex items-center space-x-1 font-medium">
+                <span class="text-sm"><ArrowUpRight /></span>
+                <span>{{ pub.title }}</span>
+              </span>
+              <div class="flex space-x-1">
+                <span>{{ pub.publication }}</span>
+                <span class="italic" v-if="pub.volum"> &bull; {{ pub.volume }} &nbsp; </span>
+              </div>
+            </a>
+          </template>
+          <template v-else>
+            <span class="font-medium">{{ pub.title }}</span>
+            <div class="flex space-x-1">
+              <span>{{ pub.publication }}</span>
+              <span class="italic" v-if="pub.volum"> &bull; {{ pub.volume }} &nbsp; </span>
+            </div>
+          </template>
+        </article>
+      </section>
+    </Container>
   </Layout>
 </template>
 
@@ -20,9 +44,15 @@ query {
   sanityScholar(id: "scholar") {
     id
     _rawBody
-		publications {
-      title
-      link
+  }
+  publications: allSanityPublication(sort: [{order: ASC}]) {
+    edges {
+      node {
+        title
+        publication 
+        volume
+        link
+      }
     }
   }
 } 
@@ -40,7 +70,7 @@ export default {
   created() {
     let scholar = this.$page.sanityScholar;
     this.body = scholar._rawBody;
-    this.publications = scholar.publications;
+    this.publications = this.$page.publications.edges.map(pub => pub.node);
   },
 };
 </script>

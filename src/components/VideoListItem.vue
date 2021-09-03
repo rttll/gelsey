@@ -1,23 +1,25 @@
 <template>
-  <li class="flex items-start space-x-2">
-    <div
-      class="w-1/2 bg-pink-400 cursor-pointer"
-      :style="style"
-      @click.prevent="$emit('clicked')"
-      >
+  <li class="flex flex-col items-start video-md:space-x-2 video-md:flex-row">
+    <div class="w-full overflow-hidden video-md:w-1/2" :style="style">
+      <div
+        class="transition-transform duration-1000 transform bg-center bg-contain cursor-pointer hover:scale-105"
+        :style="imgStyle + ' ' + style"
+        @click.prevent="$emit('clicked')"
+        >
+      </div>
     </div>
     <div class="h-full overflow-hidden">
       <a
-        href="/"
-        class="relative block cursor-pointer"
+        href="#"
+        class="relative block pt-1 cursor-pointer md:pt-0"
         @click.prevent="$emit('clicked')"
       >
         <span class="block text-base font-medium">{{video.title}}</span>
-        <p 
+        <!-- <p 
           :style="`
             max-height: 33px;
           `"
-        class="w-3/4 text-xs whitespace-nowrap overflow-ellipsis">{{video.description}}</p>
+        class="w-3/4 text-xs whitespace-nowrap overflow-ellipsis">{{video.description}}</p> -->
       </a>
     </div>
   </li>
@@ -36,13 +38,16 @@ export default {
     }
   },
   computed: {
+    imgStyle() {
+      return `
+        background-image: url(${this.src});
+      `
+    },
     style() {
       return `
         width: 168px;
         min-width: 168px;
         height: 94px;
-        background: url(${this.src}) center center; 
-        background-size: cover
       `
     }
   },

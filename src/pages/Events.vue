@@ -1,10 +1,12 @@
 <template>
   <Layout>
-    <header class="p-4">
-      <Heading :display="true">
-        Events
-      </Heading>
-    </header>
+      <header class="">
+        <Heading :display="true">
+          <Container>Events</Container>
+        </Heading>
+      </header>
+    
+    <Container>
     <section class="p-4 pt-10">
       <article v-for="event in currentEvents" class="" :key="event.id">
         <header>
@@ -14,8 +16,8 @@
             {{ event.title }}
           </h3>
         </header>
-        <div class="flex mb-20 space-x-10 pb-9">
-          <div class="w-1/3 space-y-2">
+        <div class="flex flex-col mb-20 space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+          <div class="space-y-2 md:w-1/3">
             <p>{{ event.date_display }}</p>
             <span
               v-if="event.ongoing"
@@ -50,42 +52,44 @@
         </div>
       </article>
     </section>
-
+    </Container>
+    
     <header class="p-4">
       <Heading :display="true">
-        Past Events
+        <Container>Past Events</Container>
       </Heading>
     </header>
+    
+    <Container>
+      <!-- Past shows -->
+      <section class="p-4 pb-0 space-y-8">
+        <article v-for="(group, i) in pastEvents" :key="i" class="">
+          <div v-for="(events, year) in group" :key="year">
+            <h3 class="text-2xl font-semibold">{{ year }}</h3>
+            <ul>
+              <li
+                v-for="event in events"
+                class="flex space-x-1 overflow-hidden text-sm whitespace-nowrap"
+              >
+                <span>{{ event.date }} &bull; </span>
+                <span class="italic">{{ event.title }}</span>
+                <span v-if="event.address && event.address.short_address">
+                  &bull; {{ event.address.short_address }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
 
-    <!-- Past shows -->
-    <section class="p-4 pb-0 space-y-8">
-      <article v-for="(group, i) in pastEvents" :key="i" class="">
-        <div v-for="(events, year) in group" :key="year">
-          <h3 class="text-2xl font-semibold">{{ year }}</h3>
-          <ul>
-            <li
-              v-for="event in events"
-              class="flex space-x-1 overflow-hidden text-sm whitespace-nowrap"
-            >
-              <span>{{ event.date }} &bull; </span>
-              <span class="italic">{{ event.title }}</span>
-              <span v-if="event.address && event.address.short_address">
-                &bull; {{ event.address.short_address }}
-              </span>
-            </li>
-          </ul>
-        </div>
-      </article>
-    </section>
-
-    <!-- Imported Archives (before 2021) -->
-    <section class="p-4 pb-20 text-sm">
-      <article v-for="archive in archives" :key="archive.id" class="">
-        <h3 class="text-2xl font-semibold">{{ archive.year }}</h3>
-        <BlockContent :blocks="archive._rawShows" />
-      </article>
-    </section>
-
+      <!-- Imported Archives (before 2021) -->
+      <section class="p-4 pb-20 text-sm">
+        <article v-for="archive in archives" :key="archive.id" class="">
+          <h3 class="text-2xl font-semibold">{{ archive.year }}</h3>
+          <BlockContent :blocks="archive._rawShows" />
+        </article>
+      </section>
+    </Container>
   </Layout>
 </template>
 

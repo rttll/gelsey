@@ -11,21 +11,27 @@ import '@fontsource/libre-franklin/500.css';
 import '@fontsource/libre-franklin/400.css';
 
 import DefaultLayout from '~/layouts/Default.vue';
+import Container from '~/components/Container.vue';
+import ContentContainer from '~/components/ContentContainer.vue';
 import Heading from '~/components/Heading.vue';
 import BlockContent from '~/components/BlockContent.vue';
 import ChevronDown from '~/assets/icons/chevron-down.svg';
 import ChevronUp from '~/assets/icons/chevron-up.svg';
 import ExternalLink from '~/assets/icons/external-link.svg';
+import ArrowUpRight from '~/assets/icons/arrow-up-right.svg';
 
 import VueSource from 'vue-source'
 
 export default function(Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout);
+  Vue.component('Container', Container);
+  Vue.component('ContentContainer', ContentContainer);
   Vue.component('Heading', Heading);
   Vue.component('BlockContent', BlockContent);
   Vue.component('ChevronDown', ChevronDown);
   Vue.component('ChevronUp', ChevronUp);
   Vue.component('ExternalLink', ExternalLink);
+  Vue.component('ArrowUpRight', ArrowUpRight);
 
   Vue.use(VueSource)
 }

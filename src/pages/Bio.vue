@@ -1,15 +1,17 @@
 <template>
   <Layout>
-    <header class="p-4">
+    <header class="">
       <Heading :display="true">
-        Bio
+        <Container>Bio</Container>
       </Heading>
     </header>
-    <section
-      class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
-    >
-      <BlockContent :blocks="bio._rawBody" />
-    </section>
+    <Container>
+      <section
+        class="flex flex-col py-8 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
+      >
+        <BlockContent :blocks="bio._rawBody" />
+      </section>
+    </Container>
   </Layout>
 </template>
 

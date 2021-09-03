@@ -14,12 +14,6 @@ export default {
       name: 'body',
       type: 'blockContent',
     },
-    {
-      title: 'Publications',
-      name: 'publications',
-      type: 'array',
-      of: [{ type: 'publication' }],
-    },
   ],
   initialValue: {
     title: 'Scholar',

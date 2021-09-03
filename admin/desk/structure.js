@@ -44,7 +44,7 @@ export default () =>
             .title('Composer')
             .items([
               S.listItem()
-                .title('Content')
+                .title('Intro / Content')
                 .child(
                   S.document()
                     .schemaType('composer')
@@ -64,18 +64,49 @@ export default () =>
         .title('Performer')
         .icon(HiMicrophone)
         .child(
-          S.document()
-            .schemaType('performer')
-            .documentId('performer')
-        ),
+          S.list()
+            .title('Performer')
+            .items([
+              S.listItem()
+                .title('Intro / Content')
+                .child(
+                  S.document()
+                    .schemaType('performer')
+                    .documentId('performer')
+                ),
+              S.listItem()
+                .title('Performances')
+                .child(
+                  S.documentList()
+                    .title('Performances')
+                    .filter('_type == "performance"')
+                ),
+            ])
+      ),
+      
       S.listItem()
         .title('Scholar')
         .icon(IoBookmarkSharp)
         .child(
-          S.document()
-            .schemaType('scholar')
-            .documentId('scholar')
-        ),
+          S.list()
+            .title('Scholar')
+            .items([
+              S.listItem()
+                .title('Intro / Content')
+                .child(
+                  S.document()
+                    .schemaType('scholar')
+                    .documentId('scholar')
+                ),
+              S.listItem()
+                .title('Publications')
+                .child(
+                  S.documentList()
+                    .title('Publications')
+                    .filter('_type == "publication"')
+                ),
+            ])
+        ),        
       S.listItem()
         .title('Albums')
         .icon(FaCompactDisc)

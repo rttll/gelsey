@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 v-if="el === 'h1'" :class="classes">
+    <h1 v-if="el === 'h1'" :class="classes" class="break-all" style="hyphens: auto">
       <slot />
     </h1>
     <h2 v-if="el === 'h2'" :class="classes">
@@ -26,6 +26,10 @@ export default {
   name: 'Heading',
   props: {
     display: Boolean,
+    border: {
+      type: Boolean,
+      default: true
+    },
     tag: String,
   },
   data() {
@@ -38,10 +42,25 @@ export default {
     if (this.tag) this.el = this.tag;
     if (this.display) {
       this.classes =
-        'text-5xl pb-4 md:pb-10 font-thin text-gray-400 uppercase md:text-7xl font-display';
+        'text-5xl relative text-gray-600 uppercase md:text-8xl font-display';
+      if (this.border) this.classes += ' border-b border-gray-200'
     }
   },
 };
 </script>
 
-<style></style>
+<style>
+  .display:after {
+    content: '';
+    background: rgba(75, 85, 99, 1);
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    /* transform: translateY(14px) */
+  }
+</style>
+

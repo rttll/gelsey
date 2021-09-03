@@ -1,25 +1,28 @@
 <template>
-  <Layout>
+  <Layout :wide="true">
     <section>
-      <Heading :display="true">Videos </Heading>
+      <Heading :display="true">
+        <span class="block px-8">Videos</span>
+      </Heading>
       <div
-        class="flex flex-col items-start flex-initial p-4 space-y-4 video-md:space-y-0 video-md:flex-row video-md:pt-20 video-md:space-x-10"
+        class="flex flex-col items-start flex-initial w-full px-8 pb-56 space-y-4 video-md:space-y-0 video-md:flex-row video-md:pt-20 video-md:space-x-10"
       >
         <div class="relative w-full space-y-4 video-md:w-4/6">
-          <div class="overflow-hidden bg-gray-800 aspect-w-16 aspect-h-9">
+          <div id="player-container" class="w-full overflow-hidden bg-gwwwray-800 video-md:aspect-w-16 video-md:aspect-h-9">
             <transition name="fade" mode="out-in">
               <component
                 v-bind:is="activePlayer"
                 :video="activeVideo"
-                class="overflow-hidden bg-gray-800 aspect-w-16 aspect-h-9"
+                :autoplay="autoplay"
+                class="overflow-hidden video-md:aspect-w-16 video-md:aspect-h-9"
               >
                 >
               </component>
             </transition>
           </div>
           <div v-if="activeVideo">
-            <h1 class="text-2xl">{{ activeVideo.title }}</h1>
-            <BlockContent :blocks="activeVideo._rawDescription" />
+            <h1 class="pb-4 text-2xl">{{ activeVideo.title }}</h1>
+            <BlockContent v-if="activeVideo._rawDescription" :blocks="activeVideo._rawDescription" />
           </div>
         </div>
         <nav class="flex-grow-0 w-full video-md:w-2/6">
@@ -29,7 +32,7 @@
               :key="video.url"
               @clicked="
                 () => {
-                  setVideo(video);
+                  thumbnailWasClicked(video)
                 }
               "
               :video="video"
@@ -49,6 +52,7 @@
           id
           title
           url
+          order
           _rawDescription(resolveReferences: {maxDepth: 5})
         }
       }
@@ -68,11 +72,15 @@ export default {
       activePlayer: null,
       activeVideo: null,
       videos: [],
+      autoplay: false,
     };
   },
   methods: {
+    thumbnailWasClicked(video) {
+      this.autoplay = true
+      this.setVideo(video);
+    },
     setVideo(video) {
-      // console.log('set vid', video);
       const yt = video.url.includes('youtube');
       if (yt) {
         this.activePlayer = YTPlayer;
@@ -83,26 +91,15 @@ export default {
     },
   },
   mounted() {
-    this.videos = this.$page.videos.edges.map((obj) => obj.node);
+    this.videos = this.$page.videos.edges
+      .map((obj) => obj.node)
+      .sort((a, b) => a.order - b.order) // Can't get query to sort correctly above, so just sort here.
     this.$nextTick(() => {
       this.setVideo(this.videos[0]);
     });
   },
-  created() {},
+  created() {
+    this.autoplay = false
+  },
 };
 </script>
-
-<style>
-.fade-enter-active {
-  transition: all 0.4s;
-}
-.fade-enter {
-  opacity: 0;
-  /* margin-left: 90px; */
-}
-.fade-leave-active {
-  transition: all 0.4s;
-  opacity: 0;
-  /* margin-left: -100px; */
-}
-</style>
