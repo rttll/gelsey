@@ -36,7 +36,7 @@ export default {
 
 <style>
 .menu span {
-  @apply transform transition-all origin-center duration-75 ease-in;
+  @apply transform transition-all origin-center duration-150 ease-in;
   height: 0.1rem;
 }
 

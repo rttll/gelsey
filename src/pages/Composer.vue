@@ -35,7 +35,10 @@
           >
             <BlockContent :blocks="comp._rawShort_description" />
             <div  class="flex justify-end">
-              <a v-if="comp.external_link" :href="comp.external_link">More &rarr;</a>
+              <a v-if="comp.external_link" :href="comp.external_link" class="inline-flex items-center space-x-1">
+                <ArrowUpRight />
+                More
+              </a>
               <g-link v-else :to="comp.slug">More &rarr;</g-link>
             </div>
           </div>
