@@ -1,66 +1,16 @@
 <template>
-  <NoFooter>
-    <div class="px-4 pt-6 Nav md:pt-0 md:px-14">
-      <div
-        class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
-      >
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/bio/" class="block w-auto h-12 p-2 small">
-            <component is="bio" />
-          </g-link>
-        </div>
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/events/" class="block w-auto h-12 p-2 small">
-            <events />
-          </g-link>
-        </div>
-        <div class="text-center border-gray-200 border-dashed ">
-          <g-link to="/contact/" class="block w-auto h-12 p-2 small">
-            <contact />
-          </g-link>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div class="border-b border-r border-dashed gorder-gray-200">
-          <g-link to="/composer/" class="block">
-            <composer />
-          </g-link>
-        </div>
-        <div class="border-b border-dashed md:border-r gorder-gray-200">
-          <g-link to="/performer/" class="block">
-            <performer />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-r border-dashed md:border-r-0 gorder-gray-200"
-        >
-          <g-link to="/scholar/" class="block">
-            <scholar />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-dashed md:border-b-0 md:border-r gorder-gray-200"
-        >
-          <g-link to="/albums/" class="block">
-            <albums />
-          </g-link>
-        </div>
-        <div class="border-r border-dashed gorder-gray-200">
-          <g-link to="/videos/" class="block">
-            <videos />
-          </g-link>
-        </div>
-        <div class="border-dashed gorder-gray-200">
-          <g-link to="/press/" class="block"> <press /></g-link>
-        </div>
-      </div>
-    </div>
-  </NoFooter>
+<div
+    class="w-full mx-auto font-sans text-gray-800 pt-36 container:px-0"
+  >
+    <Header />
+    <GridMenu />
+  </div>
 </template>
 
 <script>
 
-import NoFooter from '~/layouts/NoFooter'
+import Header from '../components/base/Header.vue';
+import GridMenu from '~/components/base/GridMenu'
 
 import albums from '~/assets/nav/white/albums.svg';
 import composer from '~/assets/nav/white/composer.svg';
@@ -77,7 +27,8 @@ export default {
     title: 'Home',
   },
   components: {
-    NoFooter,
+    Header,
+    GridMenu,
     albums,
     composer,
     performer,

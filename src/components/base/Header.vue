@@ -7,7 +7,6 @@
     <g-link class="block" to="/">
       <Logo class="h-16 md:h-20" />
     </g-link>
-    <SiteMenu />
   </header>
 </template>
 

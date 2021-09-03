@@ -1,10 +1,10 @@
 <template>
   <div
-    class="w-full mx-auto font-sans text-gray-800 pt-36 container:px-0"
+    class="w-full mx-auto font-sans text-gray-800 pt-28 container:px-0"
   >
     <Header />
     <transition name="fade" appear>
-      <main class="relative z-20 min-h-screen bg-white mx-aut"
+      <main class="relative z-20 min-h-screen bg-white border-b border-gray-50 mx-aut"
       >
         <section
           class="mx-auto"
@@ -15,7 +15,9 @@
         </section>
       </main>
     </transition>
-    <Footer />
+    <div class="h-screen"></div>
+    <GridMenu />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -30,10 +32,10 @@ query {
 <script>
 import Header from '../components/base/Header.vue';
 import Footer from '../components/base/Footer.vue';
-
+import GridMenu from '~/components/base/GridMenu'
 export default {
   name: 'Default',
-  components: { Header, Footer },
+  components: { Header, Footer, GridMenu },
   props: ['wide', 'container'],
   data() {
     return {
