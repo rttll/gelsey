@@ -1,6 +1,6 @@
 <template>
-  <section class="fixed inset-0 flex items-center Nav">
-    <div class="w-full py-32 m-auto" style="max-width:1000px;">
+  <section class="fixed inset-0 flex items-center justify-center">
+    <div class="w-full py-32 m-auto md:px-16 Nav" style="max-width:1000px;">
       <div
         class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
       >
