@@ -1,7 +1,7 @@
 export default {
   title: 'Performance',
   name: 'performance',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       title: 'Title',
@@ -17,6 +17,19 @@ export default {
       title: 'Description',
       name: 'description',
       type: 'blockContent',
+    },
+    {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      hidden: true,
+    },
+  ],
+  orderings: [
+    {
+      title: 'Order, ASC',
+      name: 'order',
+      by: [{ field: 'order', direction: 'asc' }],
     },
   ],
 };

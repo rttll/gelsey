@@ -15,12 +15,6 @@ export default {
       name: 'body',
       type: 'blockContent',
     },
-    {
-      title: 'Performances',
-      name: 'performances',
-      type: 'array',
-      of: [{ type: 'performance' }],
-    },
   ],
   initialValue: {
     title: 'Performer',
