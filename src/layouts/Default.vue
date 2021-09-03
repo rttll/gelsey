@@ -47,6 +47,13 @@ export default {
       let width = this.wide ? '1200px' : '1000px'
       return this.container ? `max-width: ${width}` : ''
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      // disable saved scroll position
+      // otherwise w/ browser back & bottom of the page, just shows grid nav
+      document.documentElement.scrollTop = 0
+    })
   }
 };
 </script>

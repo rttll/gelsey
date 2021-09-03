@@ -91,7 +91,7 @@ export default {
     transition: opacity .4s;
   }
   .Nav:hover a {
-    opacity: .6;
+    opacity: .75;
   }
   .Nav:hover a:hover {
     opacity: 1;
