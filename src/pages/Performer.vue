@@ -59,9 +59,14 @@ query {
   sanityPerformer(id: "performer") {
     id
     _rawBody
-		performances {
-      title
-      _rawDescription
+  }
+
+  performances: allSanityPerformance(sort: [{order: ASC}]) {
+    edges {
+      node {
+        title
+        _rawDescription
+      }
     }
   }
 } 
@@ -79,7 +84,7 @@ export default {
   created() {
     let performer = this.$page.sanityPerformer;
     this.body = performer._rawBody;
-    this.performances = performer.performances;
+    this.performances = this.$page.performances.edges.map(edge => edge.node);
   },
 };
 </script>
