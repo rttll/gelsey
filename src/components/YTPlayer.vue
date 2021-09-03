@@ -17,7 +17,8 @@ export default {
     return {
       player: null,
       width: '640',
-      height: '360'
+      height: '360',
+      firstMount: false,
     }
   },
   computed: {
@@ -27,13 +28,12 @@ export default {
   },
   watch: {
     video(is, was) {
-      this.loadVideo()
+      this.cueVideo()
     }
   },
   methods: { 
-    loadVideo() {
-      this.player.loadVideoById(this.id, 0, "large")
-      // this.player.pauseVideo()
+    cueVideo() {
+      this.player.cueVideoById(this.id, 0, "large")
     },
     createPlayer() {
       this.player = new YT.Player('player', {
@@ -46,12 +46,13 @@ export default {
           modestbranding: 1,
         },
         events: {
-          'onReady': this.loadVideo
+          'onReady': this.cueVideo
         }
       });
     },
     onYTReady() {
-      this.loadVideo()
+      this.cueVideo()
+      console.log('ready')
     },
     createScriptTag() {
       // onYouTubePlayerAPIReady() is called automatically by the API, and must be globally available
@@ -73,16 +74,17 @@ export default {
       let width = document.getElementById('player-container').clientWidth
       let height = parseInt(width) * 0.5625
       this.width = width
-      this.height = `${height}`
+      this.height = height
+      if (this.player) this.player.setSize(width, height)
     }, 
   },
   mounted() {
     this.setPlayerDimensions()
-    // window.addEventListener('resize', this.setPlayerWidth)
+    window.addEventListener('resize', this.setPlayerDimensions)
     
     // We always create a new Player on mount, but only load the script once.
-    const firstMount = document.getElementById('youtube-api') === null
-    if (firstMount) {
+    this.firstMount = document.getElementById('youtube-api') === null
+    if (this.firstMount) {
 
       // Load script, which will create player in the
       // onYouTubePlayerAPIReady() callback

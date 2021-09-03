@@ -39,7 +39,7 @@ export default {
     }, 
     setVideo: async function() {
       const currentId = await this.player.getVideoId()
-      console.log(currentId !== parseInt(this.id))
+      // console.log(currentId !== parseInt(this.id))
       if (currentId !== parseInt(this.id)) {
         this.player.loadVideo(parseInt(this.id))
         this.player.play()

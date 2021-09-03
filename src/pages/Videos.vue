@@ -5,7 +5,7 @@
         <span class="block px-8">Videos</span>
       </Heading>
       <div
-        class="flex flex-col items-start flex-initial w-full px-8 pb-40 space-y-4 video-md:space-y-0 video-md:flex-row video-md:pt-20 video-md:space-x-10"
+        class="flex flex-col items-start flex-initial w-full px-8 pb-56 space-y-4 video-md:space-y-0 video-md:flex-row video-md:pt-20 video-md:space-x-10"
       >
         <div class="relative w-full space-y-4 video-md:w-4/6">
           <div id="player-container" class="w-full overflow-hidden bg-gwwwray-800 video-md:aspect-w-16 video-md:aspect-h-9">
