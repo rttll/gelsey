@@ -39,7 +39,7 @@ module.exports = {
         projectId: projectId,
         dataset: datasetName,
         overlayDrafts: false,
-        watchMode: true,
+        watchMode: process.env.NODE_ENV === 'development',
         graphqlTag: 'default',
       },
     },
