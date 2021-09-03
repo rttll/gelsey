@@ -88,10 +88,25 @@ export default () =>
         .title('Scholar')
         .icon(IoBookmarkSharp)
         .child(
-          S.document()
-            .schemaType('scholar')
-            .documentId('scholar')
-        ),
+          S.list()
+            .title('Scholar')
+            .items([
+              S.listItem()
+                .title('Intro / Content')
+                .child(
+                  S.document()
+                    .schemaType('scholar')
+                    .documentId('scholar')
+                ),
+              S.listItem()
+                .title('Publications')
+                .child(
+                  S.documentList()
+                    .title('Publications')
+                    .filter('_type == "publication"')
+                ),
+            ])
+        ),        
       S.listItem()
         .title('Albums')
         .icon(FaCompactDisc)

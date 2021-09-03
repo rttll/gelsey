@@ -19,6 +19,8 @@ import performer from './documents/performer';
 import performance from './documents/performance';
 
 import scholar from './documents/scholar';
+import publication from './documents/publication';
+
 import contact from './documents/contact';
 import address from './documents/address';
 import social_link from './documents/social_link';
@@ -26,7 +28,6 @@ import social_link from './documents/social_link';
 import blockContent from './objects/blockContent';
 import blockImage from './objects/blockImage';
 import link from './objects/link';
-import publication from './objects/publication';
 import vimeo from './objects/vimeo';
 import youtube from './objects/youtube';
 
