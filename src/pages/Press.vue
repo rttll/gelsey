@@ -7,13 +7,13 @@
     </header>
 
     <section class="my-4 border-b border-gray-300">
-      <div class="flex flex-col items-center justify-center ">
+      <div v-if="quotes.length > 0" class="flex flex-col items-center justify-center ">
         <BlockQuote :quote="quotes[0]._rawQuote" :cite="quotes[0].cite" />
       </div>
 
       <transition name="slide-down">
         <div
-          v-if="showQuotes"
+          v-if="quotes.length > 0 && showQuotes"
           :class="`flex flex-col items-center justify-center`"
         >
           <BlockQuote
@@ -25,7 +25,7 @@
           :quote="quote._rawQuote"
         </div>
       </transition>
-      <p class="flex justify-end p-4">
+      <p class="flex justify-end p-4" v-if="quotes.length > 0">
         <a
           class="flex items-center text-xs"
           href="#"
