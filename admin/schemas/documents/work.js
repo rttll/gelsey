@@ -36,4 +36,11 @@ export default {
       hidden: true,
     },
   ],
+  orderings: [
+    {
+      title: 'Order, ASC',
+      name: 'order',
+      by: [{ field: 'order', direction: 'asc' }],
+    },
+  ],  
 };
