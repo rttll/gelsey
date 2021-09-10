@@ -75,7 +75,7 @@
         }
       }
     }
-    quotes: allSanityQuotes(sort: [{order: ASC}]) {
+    quotes: allSanityQuote(sort: [{order: ASC}]) {
       edges {
         node {
           id

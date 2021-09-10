@@ -169,10 +169,10 @@ export default () =>
                 .child(
                   S.documentList()
                     .title('Quotes')
-                    .filter('_type == "quotes"')
+                    .filter('_type == "quote"')
                     .defaultOrdering([{field: 'order', direction: 'asc'}])
                     .menuItems([
-                      ...S.documentTypeList("quotes").getMenuItems(),
+                      ...S.documentTypeList("quote").getMenuItems(),
                     ])                                
                 ),
             ])
