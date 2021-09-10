@@ -56,6 +56,10 @@ export default () =>
                   S.documentList()
                     .title('Works')
                     .filter('_type == "work"')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      ...S.documentTypeList("work").getMenuItems(),
+                    ])                                
                 ),
             ])
         ),
@@ -80,6 +84,10 @@ export default () =>
                   S.documentList()
                     .title('Performances')
                     .filter('_type == "performance"')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      ...S.documentTypeList("performance").getMenuItems(),
+                    ])                                
                 ),
             ])
       ),
@@ -104,6 +112,10 @@ export default () =>
                   S.documentList()
                     .title('Publications')
                     .filter('_type == "publication"')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      ...S.documentTypeList("publication").getMenuItems(),
+                    ])                                
                 ),
             ])
         ),        
@@ -114,6 +126,10 @@ export default () =>
           S.documentList()
             .title('Albums')
             .filter('_type == "album"')
+            .defaultOrdering([{field: 'order', direction: 'asc'}])
+            .menuItems([
+              ...S.documentTypeList("album").getMenuItems(),
+            ])            
         ),
       S.listItem()
         .title('Videos')
@@ -122,6 +138,10 @@ export default () =>
           S.documentList()
             .title('Videos')
             .filter('_type == "video"')
+            .defaultOrdering([{field: 'order', direction: 'asc'}])
+            .menuItems([
+              ...S.documentTypeList("video").getMenuItems(),
+            ])                        
         ),
 
       S.listItem()
@@ -138,6 +158,10 @@ export default () =>
                   S.documentList()
                     .title('Articles')
                     .filter('_type == "press"')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      ...S.documentTypeList("press").getMenuItems(),
+                    ])                                
                 ),
               S.listItem()
                 .title('Quotes')
@@ -145,7 +169,11 @@ export default () =>
                 .child(
                   S.documentList()
                     .title('Quotes')
-                    .filter('_type == "quotes"')
+                    .filter('_type == "quote"')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      ...S.documentTypeList("quote").getMenuItems(),
+                    ])                                
                 ),
             ])
         ),
@@ -165,6 +193,10 @@ export default () =>
           S.documentList()
             .title('Social Links')
             .filter('_type == "social_link"')
+            .defaultOrdering([{field: 'order', direction: 'asc'}])
+            .menuItems([
+              ...S.documentTypeList("social_link").getMenuItems(),
+            ])                        
         ),
       S.listItem()
         .title('Event Archive')

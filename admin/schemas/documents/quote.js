@@ -1,6 +1,6 @@
 export default {
   title: 'Press (Quotes)',
-  name: 'quotes',
+  name: 'quote',
   type: 'document',
   fields: [
     {

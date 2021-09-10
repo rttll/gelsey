@@ -5,7 +5,7 @@
     style="z-index: 99999"
   >
     <g-link class="block" to="/">
-      <Logo class="h-16 md:h-20" />
+      <Logo class="h-16 md:h-24" />
     </g-link>
   </header>
 </template>
