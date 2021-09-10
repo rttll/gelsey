@@ -2,24 +2,25 @@
   <section class="fixed inset-0 flex items-center justify-center">
     <div class="w-full py-32 m-auto md:px-16 Nav" style="max-width:1000px;">
       <div
-        class="grid grid-cols-3 border-b border-gray-200 border-dashed md:grid-cols-3 lg:grid-cols-3 "
+        class="grid grid-cols-3 border-b border-gray-200 border-dashed"
       >
         <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/bio/" class="block w-auto h-12 p-2 small">
+          <g-link to="/bio/" class="block w-auto p-2 h-14 md:h-16 small">
             <component is="bio" />
           </g-link>
         </div>
         <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/events/" class="block w-auto h-12 p-2 small">
+          <g-link to="/events/" class="block w-auto p-2 h-14 md:h-16 small">
             <events />
           </g-link>
         </div>
         <div class="text-center border-gray-200 border-dashed ">
-          <g-link to="/contact/" class="block w-auto h-12 p-2 small">
+          <g-link to="/contact/" class="block w-auto p-2 h-14 md:h-16 small">
             <contact />
           </g-link>
         </div>
       </div>
+      
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         <div class="border-b border-r border-dashed gorder-gray-200">
           <g-link to="/composer/" class="block">
