@@ -5,7 +5,7 @@
         <Container>Composer</Container>
       </Heading>
     </div>
-    <div v-if="body" class="py-16" id="fuckkkkk">
+    <div v-if="body" class="py-16">
       <Container>
         <ContentContainer>
           <BlockContent :blocks="body" />

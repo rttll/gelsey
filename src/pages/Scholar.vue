@@ -11,12 +11,12 @@
       </Container>
     </div>
     <Container>
-      <section class="pb-56 space-y-4">
-        <article v-for="pub in publications" class="text-sm" :key="pub.id">
+      <section class="pb-56 space-y-4 text-base">
+        <article v-for="pub in publications" class="text-base" :key="pub.id">
           <template v-if="pub.link">
             <a :href="pub.link" class="">
-              <span class="flex items-center space-x-1 font-medium">
-                <span class="text-sm"><ArrowUpRight /></span>
+              <span class="flex items-center space-x-1 font-semibold">
+                <span class=""><ArrowUpRight /></span>
                 <span>{{ pub.title }}</span>
               </span>
               <div class="flex space-x-1">
@@ -26,7 +26,7 @@
             </a>
           </template>
           <template v-else>
-            <span class="font-medium">{{ pub.title }}</span>
+            <span class="font-semibold">{{ pub.title }}</span>
             <div class="flex space-x-1">
               <span>{{ pub.publication }}</span>
               <span class="italic" v-if="pub.volum"> &bull; {{ pub.volume }} &nbsp; </span>

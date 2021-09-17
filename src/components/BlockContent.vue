@@ -31,6 +31,11 @@ export default {
 </script>
 
 <style>
+
+.content p {
+  @apply text-base leading-loose;
+}
+
 .content a {
   text-decoration: underline;
 }
