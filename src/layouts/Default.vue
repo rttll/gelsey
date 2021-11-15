@@ -1,10 +1,9 @@
 <template>
   <div
-    class="w-full mx-auto font-sans text-gray-800 pt-28 container:px-0"
+    class="w-full mx-auto font-sans text-gray-800 container:px-0"
   >
-    <Header />
     <transition name="fade" appear>
-      <main class="relative z-20 min-h-screen bg-white border-b border-gray-50 mx-aut"
+      <main v-if="false" class="relative z-20 min-h-screen bg-white border-b border-gray-50 mx-aut"
       >
         <section
           class="mx-auto"
@@ -15,8 +14,10 @@
         </section>
       </main>
     </transition>
-    <div class="h-screen"></div>
-    <GridMenu />
+    <div class="fixed top-0 left-0 flex flex-col items-stretch w-screen h-screen overflow-hidden border">
+      <Header />
+      <GridMenu />
+    </div>
     <!-- <Footer /> -->
   </div>
 </template>

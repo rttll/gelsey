@@ -1,62 +1,42 @@
 <template>
-  <section class="fixed inset-0 flex items-center justify-center">
-    <div class="w-full py-32 m-auto md:px-16 Nav" style="max-width:1000px;">
-      <div
-        class="grid grid-cols-3 border-b border-gray-200 border-dashed"
-      >
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/bio/" class="block w-auto p-2 h-14 md:h-16 small">
-            <component is="bio" />
-          </g-link>
-        </div>
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/events/" class="block w-auto p-2 h-14 md:h-16 small">
-            <events />
-          </g-link>
-        </div>
-        <div class="text-center border-gray-200 border-dashed ">
-          <g-link to="/contact/" class="block w-auto p-2 h-14 md:h-16 small">
-            <contact />
-          </g-link>
-        </div>
+  <nav class="flex flex-col items-stretch justify-center flex-grow flex-shrink w-screen h-screen m-auto"
+    style="max-width:1000px;"
+  >
+    
+    <div class="grid flex-shrink grid-cols-3 border-b border-gray-200 border-dashed flex-wgrow">
+      <div class="text-center border-r border-gray-200 border-dashed">
+        <g-link @click="foo" to="/bio/" class="block w-auto p-2 h-14 md:h-16 small">
+          <component is="bio" />
+        </g-link>
       </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div class="border-b border-r border-dashed gorder-gray-200">
-          <g-link to="/composer/" class="block">
-            <composer />
-          </g-link>
-        </div>
-        <div class="border-b border-dashed md:border-r gorder-gray-200">
-          <g-link to="/performer/" class="block">
-            <performer />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-r border-dashed md:border-r-0 gorder-gray-200"
-        >
-          <g-link to="/scholar/" class="block">
-            <scholar />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-dashed md:border-b-0 md:border-r gorder-gray-200"
-        >
-          <g-link to="/albums/" class="block">
-            <albums />
-          </g-link>
-        </div>
-        <div class="border-r border-dashed gorder-gray-200">
-          <g-link to="/videos/" class="block">
-            <videos />
-          </g-link>
-        </div>
-        <div class="border-dashed gorder-gray-200">
-          <g-link to="/press/" class="block"> <press /></g-link>
-        </div>
+      <div class="text-center border-r border-gray-200 border-dashed">
+        <g-link to="/events/" class="block w-auto p-2 h-14 md:h-16 small">
+          <events />
+        </g-link>
+      </div>
+      <div class="text-center border-gray-200 border-dashed ">
+        <g-link to="/contact/" class="block w-auto p-2 h-14 md:h-16 small">
+          <contact />
+        </g-link>
       </div>
     </div>
-  </section>
+    
+    <!-- <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3"> -->
+        <!-- class="flex items-center justify-center w-1/2 border-b border-r border-dashed gorder-gray-200 md:w-1/3 big"> -->
+    <div class="flex flex-wrap items-start flex-grow flex-shrink" style="height:1px">
+      <g-link
+        v-for="link in links"
+        :key="link.to"
+        :to="link.to"
+        class="flex items-center justify-center flex-grow flex-shrink w-1/2 overflow-hidden border-gray-200 border-dashed md:w-1/3 main-link"
+        :class="link.classes"
+        style="height: 33.333%"
+      >
+        <component :is="link.component" />
+      </g-link>      
+    </div>
+    
+  </nav>
 </template>
 
 <script>
@@ -73,6 +53,42 @@ import contact from '~/assets/nav/white/contact.svg';
 
 export default {
   name: 'GridMenu',
+  data() {
+    return {
+      links: [
+        {
+          to: "/composer/",
+          component: "composer",
+          classes: "border-b border-r  ",
+        },
+        {
+          to: "/performer/", 
+          component: "performer",
+          classes: "border-b md:border-r  ",
+        },
+        {
+          to: "/scholar/",
+          component: "scholar",
+          classes: "border-b border-r md:border-r-0  " ,
+        },
+        {
+          to: "/albums/",
+          component: "albums",
+          classes: "border-b md:border-b-0 md:border-r  ",
+        },
+        {
+          to: "/videos/", 
+          component: "videos",
+          classes: "border-r ",
+        },
+        {
+          to: "/press/",
+          component: "press",
+          classes: "",
+        },
+      ]
+    }
+  },
   components: {
     albums,
     composer,
@@ -84,6 +100,11 @@ export default {
     events,
     contact,
   },
+  methods: {
+    foo(e) {
+      console.log(e)
+    }
+  }
 };
 </script>
 
@@ -98,14 +119,14 @@ export default {
     opacity: 1;
   }
 
-.svgfoo {
-  display: block;
+svg {
   width: 100%;
-  height: auto;
-  max-height: 50%;
+  /* height: auto; */
+  max-height: 100%;
 }
-.small svg {
-  height: 100%;
-  margin: auto;
-}
+
+/* .main-link svg {
+  width: 120%;
+} */
+
 </style>
