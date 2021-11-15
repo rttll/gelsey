@@ -12,37 +12,30 @@
     </div>
     
     <header class="my-12">
-        <Heading :display="true">
-          <Container>Performances</Container>
-        </Heading>
-      </header>
+      <Heading :smallDisplay="true">
+        <Container>Performances</Container>
+      </Heading>
+    </header>
     
     <Container>
-      <section class="py-20">
+      <section class="py-20 space-y-6">
         <article v-for="perf in performances" class="" :key="perf.id">
-          <div class="flex flex-col mb-20 space-y-4 md:space-y-0 md:space-x-10 md:flex-row pb-9">
-            <div class="space-y-2 md:w-1/3">
+          <div class="flex flex-col space-y-4 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+            <div class="space-y-2 overflow-hidden md:w-5/12">
               <header class="text-rwight">
                 <Heading tag="h3">
                   {{ perf.title }}
                 </Heading>
 
                 <p class="text-gray-400">{{ perf.year }}</p>
-                <a
-                  v-if="perf.link"
-                  :href="perf.link"
-                  class="text-xs text-gray-400"
-                >
-                  {{ perf.link }}
-                </a>
               </header>
             </div>
             <div
-              class="text-base leading-loose md:w-2/3"
+              class="text-base leading-loose md:w-7/12"
               v-if="perf._rawDescription"
             >
               <BlockContent :blocks="perf._rawDescription" />
-              <div v-if="perf.link">
+              <div v-if="perf.link" class="flex justify-end">
                 <a :href="perf.link">More &rarr;</a>
               </div>
             </div>
@@ -67,6 +60,7 @@ query {
         id 
         order
         title
+        link
         _rawDescription
       }
     }

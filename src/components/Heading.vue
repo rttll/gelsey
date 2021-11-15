@@ -26,6 +26,7 @@ export default {
   name: 'Heading',
   props: {
     display: Boolean,
+    smallDisplay: Boolean,
     border: {
       type: Boolean,
       default: true
@@ -40,9 +41,9 @@ export default {
   },
   created() {
     if (this.tag) this.el = this.tag;
-    if (this.display) {
-      this.classes =
-        'text-5xl relative text-gray-600 uppercase md:text-8xl font-display';
+    if (this.display || this.smallDisplay) {
+      this.classes = ' relative text-gray-600 uppercase font-display ';
+      this.classes += this.smallDisplay ? ' text-2xl md:text-5xl ' : ' text-5xl md:text-8xl '
       if (this.border) this.classes += ' border-b border-gray-200'
     }
   },

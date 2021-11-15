@@ -22,8 +22,10 @@
     </Container>
       <section class="pb-20">
         <header class="my-16 md:my-32">
-          <Heading :display="true">
-            <Container>Collaborations</Container>
+          <Heading :smallDisplay="true">
+            <Container>
+              Featured Performer
+            </Container>
           </Heading>
         </header>
       <Container>
