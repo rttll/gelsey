@@ -44,6 +44,7 @@
       edges {
         node {
           id
+          order
           title
           year
           link
@@ -68,7 +69,9 @@ export default {
   components: { Album, Social },
   computed: {
     albums() {
-      return this.$page.albums.edges.map((obj) => obj.node);
+      return this.$page.albums.edges
+        .map((obj) => obj.node)
+        .sort((a, b) => a.order - b.order)
     },
   },
 };

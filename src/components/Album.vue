@@ -1,5 +1,6 @@
 <template>
   <article 
+    :data-order="album.order"
     class="w-full"
     :class="classes"
   >

@@ -19,17 +19,17 @@
                 <span class=""><ArrowUpRight /></span>
                 <span>{{ pub.title }}</span>
               </span>
-              <div class="flex space-x-1">
+              <div class="flex space-x-1 text-sm">
                 <span>{{ pub.publication }}</span>
-                <span class="italic" v-if="pub.volum"> &bull; {{ pub.volume }} &nbsp; </span>
+                <span class="italic" v-if="pub.volume"> &bull; {{ pub.volume }} &nbsp; </span>
               </div>
             </a>
           </template>
           <template v-else>
             <span class="font-semibold">{{ pub.title }}</span>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 text-sm">
               <span>{{ pub.publication }}</span>
-              <span class="italic" v-if="pub.volum"> &bull; {{ pub.volume }} &nbsp; </span>
+              <span class="italic" v-if="pub.volume"> &bull; {{ pub.volume }} &nbsp; </span>
             </div>
           </template>
         </article>
@@ -52,6 +52,7 @@ query {
         publication 
         volume
         link
+        order
       }
     }
   }
@@ -70,7 +71,9 @@ export default {
   created() {
     let scholar = this.$page.sanityScholar;
     this.body = scholar._rawBody;
-    this.publications = this.$page.publications.edges.map(pub => pub.node);
+    this.publications = this.$page.publications.edges
+      .map(pub => pub.node)
+      .sort((a, b) => a.order - b.order)
   },
 };
 </script>

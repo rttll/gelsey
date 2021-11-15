@@ -64,6 +64,8 @@ query {
   performances: allSanityPerformance(sort: [{order: ASC}]) {
     edges {
       node {
+        id 
+        order
         title
         _rawDescription
       }
@@ -84,7 +86,9 @@ export default {
   created() {
     let performer = this.$page.sanityPerformer;
     this.body = performer._rawBody;
-    this.performances = this.$page.performances.edges.map(edge => edge.node);
+    this.performances = this.$page.performances.edges
+      .map(edge => edge.node)
+      .sort((a, b) => a.order - b.order)
   },
 };
 </script>
