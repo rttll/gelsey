@@ -29,7 +29,16 @@ module.exports = {
   runtimeCompiler: true,
   templates: {
     SanityWork: [
-      { path: '/composer/:title', component: './src/templates/Work.vue' },
+      { 
+        component: './src/templates/Work.vue',
+        path: (node) => {
+          let slug = node.title
+            .replace(/./g, (match) => {
+              return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-'
+            })
+          return '/composer/' + slug
+        }
+      },
     ],
   },
   plugins: [

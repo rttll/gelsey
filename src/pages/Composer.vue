@@ -87,11 +87,12 @@ export default {
     this.work = this.$page.work.edges
       .map((obj) => {
         obj.node.slug =
-          this.$route.path +
-          '/' +
+          this.$route.path + '/' +
           obj.node.title
-            .replace(/\s/g, '-')
-            .replace(/[A-Z]/g, (match) => match.toLowerCase());
+            .replace(/./g, (match) => {
+              return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-'
+            })
+
         return obj.node;
       })
       .sort((a, b) => a.order - b.order)

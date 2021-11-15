@@ -4,20 +4,20 @@
       <Heading :display="true">
         {{work.title}}
       </Heading>
-      <section class="pb-20 my-12">
+      <article class="pb-6 my-12">
         <div
           class="text-base leading-loose md:w-2/3 md:pr-20"
           v-if="work._rawDescription"
         >
           <BlockContent :blocks="work._rawDescription" />
         </div>
-      </section>
-      <section class="py-12">
-        <g-link to="/composer">&larr; Back to Composer</g-link>
-      </section>
+      </article>
     </Container>
+    <footer class="py-12">
+      <g-link to="/composer" class="block px-6 py-6 text-lg md:px-20 bg-gray-50">
+        &larr; Back to Composer</g-link>
+    </footer>
   </Layout>
-  </div>
 </template>
 
 <page-query>
