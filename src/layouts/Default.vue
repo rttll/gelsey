@@ -1,23 +1,24 @@
 <template>
   <div
-    class="w-full mx-auto font-sans text-gray-800 pt-28 container:px-0"
+    class="w-full mx-auto font-sans text-gray-800 container:px-0"
   >
-    <Header />
     <transition name="fade" appear>
-      <main class="relative z-20 min-h-screen bg-white border-b border-gray-50 mx-aut"
+      <main v-if="showMain" class="relative z-10 min-h-screen bg-white border-b border-gray-50"
+        style="margin-bottom:100vh"
       >
+        <Header />
         <section
           class="mx-auto"
           :style="style"
         >
           <slot />
-
         </section>
       </main>
     </transition>
-    <div class="h-screen"></div>
-    <GridMenu />
-    <!-- <Footer /> -->
+    <section class="fixed top-0 left-0 flex flex-col items-stretch w-screen h-screen overflow-hidden border md:pb-8">
+      <Header />
+      <GridMenu />
+    </section>
   </div>
 </template>
 
@@ -46,13 +47,18 @@ export default {
     style() {
       let width = this.wide ? '1200px' : '1000px'
       return this.container ? `max-width: ${width}` : ''
+    },
+    showMain() {
+      return this.$route.path !== '/'
     }
   },
   mounted() {
     this.$nextTick(() => {
       // disable saved scroll position
       // otherwise w/ browser back & bottom of the page, just shows grid nav
-      document.documentElement.scrollTop = 0
+      document.documentElement.scrollTop = 0;
+
+
     })
   }
 };

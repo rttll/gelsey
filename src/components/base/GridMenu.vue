@@ -1,78 +1,152 @@
 <template>
-  <section class="fixed inset-0 flex items-center justify-center">
-    <div class="w-full py-32 m-auto md:px-16 Nav" style="max-width:1000px;">
-      <div
-        class="grid grid-cols-3 border-b border-gray-200 border-dashed"
-      >
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/bio/" class="block w-auto p-2 h-14 md:h-16 small">
-            <component is="bio" />
-          </g-link>
-        </div>
-        <div class="text-center border-r border-gray-200 border-dashed">
-          <g-link to="/events/" class="block w-auto p-2 h-14 md:h-16 small">
-            <events />
-          </g-link>
-        </div>
-        <div class="text-center border-gray-200 border-dashed ">
-          <g-link to="/contact/" class="block w-auto p-2 h-14 md:h-16 small">
-            <contact />
-          </g-link>
-        </div>
+  <nav class="flex flex-col items-stretch justify-center flex-grow flex-shrink w-screen h-screen m-auto"
+    style="max-width:1000px;"
+  >
+    
+    <div class="grid flex-shrink grid-cols-3 border-b border-gray-200 border-dashed flex-wgrow">
+      <div class="text-center border-r border-gray-200 border-dashed">
+        <g-link to="/bio/" class="block w-auto p-2 h-14 md:h-16 small">
+          <component is="bio" />
+        </g-link>
       </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div class="border-b border-r border-dashed gorder-gray-200">
-          <g-link to="/composer/" class="block">
-            <composer />
-          </g-link>
-        </div>
-        <div class="border-b border-dashed md:border-r gorder-gray-200">
-          <g-link to="/performer/" class="block">
-            <performer />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-r border-dashed md:border-r-0 gorder-gray-200"
-        >
-          <g-link to="/scholar/" class="block">
-            <scholar />
-          </g-link>
-        </div>
-        <div
-          class="border-b border-dashed md:border-b-0 md:border-r gorder-gray-200"
-        >
-          <g-link to="/albums/" class="block">
-            <albums />
-          </g-link>
-        </div>
-        <div class="border-r border-dashed gorder-gray-200">
-          <g-link to="/videos/" class="block">
-            <videos />
-          </g-link>
-        </div>
-        <div class="border-dashed gorder-gray-200">
-          <g-link to="/press/" class="block"> <press /></g-link>
-        </div>
+      <div class="text-center border-r border-gray-200 border-dashed">
+        <g-link to="/events/" class="block w-auto p-2 h-14 md:h-16 small">
+          <events />
+        </g-link>
+      </div>
+      <div class="text-center border-gray-200 border-dashed ">
+        <g-link to="/contact/" class="block w-auto p-2 h-14 md:h-16 small">
+          <contact />
+        </g-link>
       </div>
     </div>
-  </section>
+
+    <!-- 1px height forces it to shrink   -->
+    <div class="flex flex-wrap items-stretch flex-grow flex-shrink" style="height:1px">
+      <g-link
+        v-for="link in links"
+        :key="link.to"
+        :to="link.to"
+        class="relative flex items-center justify-center flex-grow flex-shrink w-1/2 overflow-hidden border-gray-200 border-dashed md:w-1/3 main-link"
+        :class="link.classes"
+      >
+        <component class="absolute z-20" :is="link.component" />
+
+        <!-- G-Image src attribute must be static -->
+        <!-- https://gridsome.org/docs/images/#images -->
+        
+        <g-image
+          v-if="link.composer"
+          src="~/assets/images/nav/composer.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+        <g-image
+          v-if="link.performer"
+          src="~/assets/images/nav/performer.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+        <g-image
+          v-if="link.scholar"
+          src="~/assets/images/nav/scholar.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+        <g-image
+          v-if="link.albums"
+          src="~/assets/images/nav/albums.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+        <g-image
+          v-if="link.video"
+          src="~/assets/images/nav/video.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+        <g-image
+          v-if="link.press"
+          src="~/assets/images/nav/press.jpg"
+          width="500" 
+          :class="link.imageClass + imageClass"
+          :style="imageStyle"  
+        />
+      </g-link>      
+    </div>
+    
+  </nav>
 </template>
 
 <script>
 
-import albums from '~/assets/nav/white/albums.svg';
-import composer from '~/assets/nav/white/composer.svg';
-import performer from '~/assets/nav/white/performer.svg';
-import press from '~/assets/nav/white/press.svg';
-import scholar from '~/assets/nav/white/scholar.svg';
-import videos from '~/assets/nav/white/videos.svg';
-import bio from '~/assets/nav/white/bio.svg';
-import events from '~/assets/nav/white/events.svg';
-import contact from '~/assets/nav/white/contact.svg';
+import albums from '~/assets/nav/trans/albums.svg';
+import composer from '~/assets/nav/trans/composer.svg';
+import performer from '~/assets/nav/trans/performer.svg';
+import press from '~/assets/nav/trans/press.svg';
+import scholar from '~/assets/nav/trans/scholar.svg';
+import videos from '~/assets/nav/trans/videos.svg';
+import bio from '~/assets/nav/trans/bio.svg';
+import events from '~/assets/nav/trans/events.svg';
+import contact from '~/assets/nav/trans/contact.svg';
 
 export default {
   name: 'GridMenu',
+  data() {
+    return {
+      imageClass: ' absolute z-10 object-center object-cover opacity-70 ',
+      imageStyle: '',
+      links: [
+        {
+          to: "/composer/",
+          component: "composer",
+          classes: "border-b border-r  ",
+          composer: true,
+          imageClass: '',
+        },
+        {
+          to: "/performer/", 
+          component: "performer",
+          classes: "border-b md:border-r  ",
+          performer: true,
+          imageClass: '',
+        },
+        {
+          to: "/scholar/",
+          component: "scholar",
+          classes: "border-b border-r md:border-r-0  " ,
+          scholar: true,
+          imageClass: ' top-0 ',
+        },
+        {
+          to: "/albums/",
+          component: "albums",
+          classes: "border-b md:border-b-0 md:border-r  ",
+          imageClass: '',
+          albums: true
+        },
+        {
+          to: "/videos/", 
+          component: "videos",
+          classes: "border-r ",
+          imageClass: ' top-0 ',
+          video: true,
+        },
+        {
+          to: "/press/",
+          component: "press",
+          classes: "",
+          imageClass: ' top-0 ',
+          press: true,
+        },
+      ]
+    }
+  },
   components: {
     albums,
     composer,
@@ -98,14 +172,9 @@ export default {
     opacity: 1;
   }
 
-.svgfoo {
-  display: block;
+svg {
   width: 100%;
-  height: auto;
-  max-height: 50%;
+  max-height: 120%;
 }
-.small svg {
-  height: 100%;
-  margin: auto;
-}
+
 </style>
