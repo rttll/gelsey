@@ -1,9 +1,8 @@
 <template>
   <header
-    class="flex items-start justify-between w-full p-4 bg-white"
+    class="z-20 flex items-start justify-between w-full p-4 bg-white"
     :class="classes"
   >
-    <!-- style="z-index: -1" -->
     <g-link class="block" to="/">
       <Logo class="h-16 md:h-24" />
     </g-link>

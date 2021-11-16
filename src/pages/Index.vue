@@ -1,13 +1,5 @@
 <template>
-  <Layout>
-    
-  </Layout>
-<!-- <div
-    class="w-full mx-auto font-sans text-gray-800 pt-36 container:px-0"
-  >
-    <Header />
-    <GridMenu />
-  </div> -->
+  <Layout></Layout>
 </template>
 
 <script>
