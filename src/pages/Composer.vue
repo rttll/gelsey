@@ -13,7 +13,7 @@
       </Container>
     </div>
     <header class="my-12">
-      <Heading :display="true">
+      <Heading :smallDisplay="true">
         <Container>Works</Container>
       </Heading>
     </header>
