@@ -37,25 +37,3 @@ export default {
 };
 </script>
 
-<style>
-  .Nav a {
-    transition: opacity .4s;
-  }
-  .Nav:hover a {
-    opacity: .6;
-  }
-  .Nav:hover a:hover {
-    opacity: 1;
-  }
-
-.svgfoo {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 50%;
-}
-.small svg {
-  height: 100%;
-  margin: auto;
-}
-</style>

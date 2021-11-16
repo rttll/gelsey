@@ -22,7 +22,10 @@
     </div>
 
     <!-- 1px height forces it to shrink   -->
-    <div class="flex flex-wrap items-stretch flex-grow flex-shrink" style="height:1px">
+    <div 
+      class="flex flex-wrap items-stretch flex-grow flex-shrink shadow-lg" 
+      style="height:1px"
+    >
       <g-link
         v-for="link in links"
         :key="link.to"
@@ -162,13 +165,13 @@ export default {
 </script>
 
 <style>
-  .Nav a {
+  nav a {
     transition: opacity .4s;
   }
-  .Nav:hover a {
+  nav:hover a {
     opacity: .75;
   }
-  .Nav:hover a:hover {
+  nav:hover a:hover {
     opacity: 1;
   }
 
@@ -176,5 +179,28 @@ svg {
   width: 100%;
   max-height: 120%;
 }
+
+.small svg {
+  height: 100%;
+  margin: auto;
+}
+/* 
+<style>
+  .Nav a {
+    transition: opacity .4s;
+  }
+  .Nav:hover a {
+    opacity: .6;
+  }
+  .Nav:hover a:hover {
+    opacity: 1;
+  }
+
+.svgfoo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 50%;
+} */
 
 </style>
