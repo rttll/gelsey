@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-col items-stretch justify-center flex-grow flex-shrink w-screen h-screen m-auto"
+  <nav class="flex flex-col items-stretch justify-center flex-grow flex-shrink w-screen m-auto Xh-screen"
     style="max-width:1000px;"
   >
     

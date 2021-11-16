@@ -15,7 +15,7 @@
         </section>
       </main>
     </transition>
-    <section class="fixed top-0 left-0 flex flex-col items-stretch w-screen h-screen overflow-hidden border md:pb-8">
+    <section class="fixed top-0 left-0 flex flex-col items-stretch w-screen h-screen overflow-hidden border md:pb-8 pb-28">
       <Header />
       <GridMenu />
     </section>

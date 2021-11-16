@@ -1,9 +1,9 @@
 <template>
   <header
-    class="z-20 flex items-start justify-between w-full p-4 bg-white"
+    class="flex items-start w-full p-4 bg-white "
     :class="classes"
   >
-    <g-link class="block" to="/">
+    <g-link class="block logo" to="/">
       <Logo class="h-16 md:h-24" />
     </g-link>
   </header>
@@ -37,3 +37,10 @@ export default {
   }
 };
 </script>
+
+<style>
+  .logo svg {
+    width: 100%;
+    display: block;
+  }
+</style>
