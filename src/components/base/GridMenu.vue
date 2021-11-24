@@ -33,10 +33,11 @@
         class="relative flex items-center justify-center flex-grow flex-shrink w-1/2 overflow-hidden md:w-1/3 main-link"
         :class="link.classes"
       >
-        <!-- :style=" link.composer ? 'background-image: url(./assets/images/nav/composer.jpg)' : '' " -->
-        <component class="absolute z-20" :is="link.component" />
 
-        <!-- G-Image src attribute must be static -->
+        <component class="absolute z-20" :is="link.component" />
+        <!-- <component v-if="link.component !== 'composer' " class="absolute z-20" :is="link.component" /> -->
+
+        <!-- <g-image> src attribute must be static -->
         <!-- https://gridsome.org/docs/images/#images -->
         
         <g-image
@@ -100,53 +101,54 @@ import bio from '~/assets/nav/trans/bio.svg';
 import events from '~/assets/nav/trans/events.svg';
 import contact from '~/assets/nav/trans/contact.svg';
 
+// import '~/assets/css/menu.css'
+
 export default {
   name: 'GridMenu',
   data() {
     return {
-      imageClass: ' absolute z-10 object-center object-cover opacity-70 ',
-      // imageStyle: 'filter: grayscale(.8); ',
+      imageClass: ' absolute z-10 object-center object-cover opacity-70',
       imageStyle: '',
       links: [
         {
           to: "/composer/",
           component: "composer",
-          classes: "border-gray-400 border-b border-r rounded-tl-md ",
+          classes: "composer border-gray-400 border-b border-r rounded-tl-md ",
           composer: true,
           imageClass: '',
         },
         {
           to: "/performer/", 
           component: "performer",
-          classes: "border-gray-400 border-b md:border-r rounded-tr-md md:rounded-tr-none",
+          classes: "performer border-gray-400 border-b md:border-r rounded-tr-md md:rounded-tr-none",
           performer: true,
           imageClass: '',
         },
         {
           to: "/scholar/",
           component: "scholar",
-          classes: "border-gray-400 border-b border-r md:border-r-0 md:rounded-tr-md  " ,
+          classes: "scholar border-gray-400 border-b border-r md:border-r-0 md:rounded-tr-md  " ,
           scholar: true,
           imageClass: ' top-0 ',
         },
         {
           to: "/albums/",
           component: "albums",
-          classes: "border-gray-400 border-b md:border-b-0 md:border-r md:rounded-bl-md ",
+          classes: "albums border-gray-400 border-b md:border-b-0 md:border-r md:rounded-bl-md ",
           imageClass: '',
           albums: true
         },
         {
           to: "/videos/", 
           component: "videos",
-          classes: "border-gray-400 border-r ",
+          classes: "videos border-gray-400 border-r ",
           imageClass: ' top-0 ',
           video: true,
         },
         {
           to: "/press/",
           component: "press",
-          classes: " rounded-br-md ",
+          classes: "press  rounded-br-md ",
           imageClass: ' top-0',
           press: true,
         },
@@ -172,14 +174,16 @@ export default {
     transition: opacity .4s;
   }
   nav a img {
-    transition: filter .4s
+    transition: filter .4s;
+    filter: grayscale(.7);
+    /* filter: saturate(.2); */
   }
   nav:hover a {
     opacity: .75;
   }
-  nav:hover img {
+  /* nav:hover img {
     filter: grayscale(.9);
-  }
+  } */
   nav:hover a:hover {
     opacity: 1;
   }
@@ -196,6 +200,26 @@ svg {
   height: 100%;
   margin: auto;
 }
+
+/* .composer {
+  background-image: url(~/assets/images/nav/composer.jpg)
+}
+.performer {
+  background-image: url(~/assets/images/nav/performer.jpg)
+}
+.scholar {
+  background-image: url(~/assets/images/nav/scholar.jpg)
+}
+.albums {
+  background-image: url(~/assets/images/nav/albums.jpg)
+}
+.videos {
+  background-image: url(~/assets/images/nav/videos.jpg)
+}
+.press {
+  background-image: url(~/assets/images/nav/press.jpg)
+} */
+
 /* 
 <style>
   .Nav a {
