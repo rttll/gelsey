@@ -1,9 +1,18 @@
 <template>
-  <img
-    :class="`${imageClass} pb-4`"
-    alt=""
-    :src="`${asset.url}?auto=format&w=800`"
-  />
+  <figure
+      :class="`${containerClass} pb-4 image-container`"
+  >
+    <img
+      :class="`w-full h-auto pb-4`"
+      alt=""
+      :src="`${asset.url}?auto=format&w=800`"
+    />
+    <figcaption v-if="caption" class="relative flex justify-end">
+      <span class="absolute right-0 text-xs transform -translate-y-3">
+        {{ caption }}
+      </span>
+    </figcaption>
+  </figure>
 </template>
 
 <script>
@@ -14,41 +23,41 @@ export default {
     asset: Object,
     crop: Object,
     hotspot: Object,
+    caption: String
   },
   data() {
     return {
-      imageClass: this.align ? `align-${this.align[0]}` : '',
+      containerClass: this.align ? `align-${this.align[0]}` : '',
     };
   },
+  created() {
+  }
 };
 </script>
 
 <style>
-figure {
-  margin: 0;
-}
 
-.content img.align-left {
+.content .image-container.align-left {
   float: left;
   padding-right: 2rem;
 }
 
-.content img.align-right {
+.content .image-container.align-right {
   float: right;
   padding-left: 2rem;
 }
 
-.content img[class*='align'] {
+.content .image-container[class*='align'] {
   width: 50%;
 }
 
-.content img[class*='align'] + p {
+.content .image-container[class*='align'] + p {
   padding-top: 0;
 }
 
 @media only screen and (max-width: 640px) {
-  .content img,
-  .content img[class*='align'] {
+  .content .image-container,
+  .content .image-container[class*='align'] {
     width: 100%;
     max-width: 100%;
     float: none;
