@@ -175,15 +175,15 @@ export default {
   }
   nav a img {
     transition: filter .4s;
-    filter: grayscale(.7);
+    /* filter: grayscale(.7); */
     /* filter: saturate(.2); */
   }
   nav:hover a {
     opacity: .75;
   }
-  /* nav:hover img {
+  nav:hover img {
     filter: grayscale(.9);
-  } */
+  }
   nav:hover a:hover {
     opacity: 1;
   }
