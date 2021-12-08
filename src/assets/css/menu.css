@@ -1,5 +1,20 @@
-.composer {
-  background: url('../../assets/images/nav/composer.jpg') center center no-repeat;
+/* .press {
+  background: url('../../assets/images/nav/press.jpg') center center no-repeat;
   background-size: cover;
+} */
 
+.grid-nav-link {
+  height: 0;
+  padding-bottom: 37%;
+  /* padding-bottom: calc(9/16 * 60%); */
 }
+
+@media (min-width: 768px) { 
+  .grid-nav-link {
+    padding-bottom: 25%
+    /* padding-bottom: 33.333333%; */
+    /* padding-bottom: calc(9/16 * 50%); */
+  }
+}
+
+

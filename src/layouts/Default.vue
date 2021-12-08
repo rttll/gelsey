@@ -3,8 +3,9 @@
     class="w-full mx-auto font-sans text-gray-800 container:px-0"
   >
     <transition name="fade" appear>
-      <main v-if="showMain" class="relative z-10 min-h-screen bg-white border-b border-gray-50"
-        style="margin-bottom:100vh"
+      <main 
+        v-if="showMain" 
+        class="relative z-10 min-h-screen pb-24 bg-white"
       >
         <Header />
         <section
@@ -15,8 +16,10 @@
         </section>
       </main>
     </transition>
-    <section class="fixed top-0 left-0 flex flex-col items-stretch w-screen h-screen overflow-hidden border md:pb-8 pb-28">
-      <Header />
+    <section 
+      class="top-0 left-0 flex flex-col items-stretch full md:pb-12 pb-28"
+    >
+      <Header v-if="!showMain" />
       <GridMenu />
     </section>
   </div>
