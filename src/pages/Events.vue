@@ -58,7 +58,7 @@
     </Container>
     
     <header class="p-4">
-      <Heading :display="true">
+      <Heading :smallDisplay="true">
         <Container>Past Events</Container>
       </Heading>
     </header>
