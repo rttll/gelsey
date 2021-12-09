@@ -52,6 +52,12 @@ module.exports = {
         graphqlTag: 'default',
       },
     },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-56707908-1'
+      }
+    }    
   ],
   css: {
     loaderOptions: {
