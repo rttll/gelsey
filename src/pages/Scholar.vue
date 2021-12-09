@@ -3,15 +3,22 @@
       <Heading :display="true">
         <Container>Scholar</Container>
       </Heading>
-    <div v-if="body" class="py-16">
+    <div v-if="body" class="pt-16">
       <Container>
         <ContentContainer>
           <BlockContent :blocks="body" />
         </ContentContainer>
       </Container>
     </div>
+    <header class="my-24">
+      <Heading :smallDisplay="true">
+        <Container>
+          Publications
+        </Container>
+      </Heading>
+    </header>
     <Container>
-      <section class="pb-56 space-y-4 text-base">
+      <section class="pb-20 space-y-4 text-base">
         <article v-for="pub in publications" class="text-base" :key="pub.id">
           <template v-if="pub.link">
             <a :href="pub.link" class="">
@@ -35,6 +42,7 @@
         </article>
       </section>
     </Container>
+    
   </Layout>
 </template>
 

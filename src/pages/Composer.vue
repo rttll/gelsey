@@ -19,31 +19,35 @@
     </header>
 
     <Container>
-      <article v-for="comp in work" class="" :key="comp.id">
-        <div class="flex flex-col mb-20 space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
-          <div class="w-full space-y-2 md:w-1/3 ">
-            <header>
-              <Heading tag="h3">
-                {{ comp.title }}
-              </Heading>
-              <p class="text-lg text-gray-400">{{ comp.year }}</p>
-            </header>
-          </div>
-          <div
-            class="w-full space-y-4 text-base leading-loose md:w-2/3 md:pr-20"
-            v-if="comp._rawShort_description"
-          >
-            <BlockContent :blocks="comp._rawShort_description" />
-            <div  class="flex justify-end">
-              <a v-if="comp.external_link" :href="comp.external_link" class="inline-flex items-center space-x-1">
-                <ArrowUpRight />
-                More
-              </a>
-              <g-link v-else :to="comp.slug">More &rarr;</g-link>
+      <div class="space-y-6">
+        <article v-for="comp in work" class="" :key="comp.id">
+          <div class="flex flex-col space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+            <div class="w-full space-y-2 md:w-1/3 ">
+              <header>
+                <Heading tag="h3">
+                  {{ comp.title }}
+                </Heading>
+                <p class="text-lg text-gray-400">{{ comp.year }}</p>
+              </header>
+            </div>
+            <div
+              class="w-full space-y-4 text-base leading-loose md:w-2/3 md:pr-20"
+              v-if="comp._rawShort_description"
+            >
+              <BlockContent :blocks="comp._rawShort_description" />
+              
+              <div  class="flex justify-end w-full">
+                <a v-if="comp.external_link" :href="comp.external_link" class="inline-flex items-center space-x-1">
+                  <ArrowUpRight />
+                  More
+                </a>
+                <g-link v-else :to="comp.slug">More &rarr;</g-link>
+              </div>
+              
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </Container>
   </Layout>
 </template>

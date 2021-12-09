@@ -7,7 +7,7 @@
       </header>
     
     <Container>
-    <section class="p-4 pt-10">
+    <section class="p-4 pt-10 space-y-8">
       <article v-for="event in currentEvents" class="" :key="event.id">
         <header>
           <h3
@@ -16,31 +16,34 @@
             {{ event.title }}
           </h3>
         </header>
-        <div class="flex flex-col mb-20 space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
-          <div class="space-y-2 md:w-1/3">
-            <p>{{ event.date_display }}</p>
-            <span
-              v-if="event.ongoing"
-              class="inline-block px-3 text-xs text-white bg-gray-700 rounded-full"
-              style="padding-top: 2px; padding-bottom: 2px"
-            >
-              ongoing
-            </span>
-            <div class="space-y-4 text-sm" v-if="event.address">
+        <div class="flex flex-col space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9">
+          <div class="space-y-4 md:w-1/3">
+            <div class="flex items-start justify-between space-x-1">
+              <p>{{ event.date_display }}</p>
+              <span
+                v-if="event.ongoing"
+                class="inline-block px-3 text-xs text-white bg-gray-700 rounded-full"
+                style="padding-top: 2px; padding-bottom: 2px"
+              >
+                Ongoing
+              </span>
+            </div>
+
+            <div class="space-y-1" v-if="event.address">
               <h4 class="font-semibold">
                 {{ event.address.name }}
               </h4>
+              <BlockContent
+                v-if="event.address._rawAddress"
+                class="text-xs"
+                :blocks="event.address._rawAddress" />
               <a
                 :href="event.address.link"
                 v-if="event.address.link"
-                class="block text-xs text-gray-400 truncate"
+                class="block text-sm text-gray-400 truncate"
               >
                 {{ event.address.link }}
               </a>
-              <BlockContent
-                v-if="event.address._rawAddress"
-                class="text-sm"
-                :blocks="event.address._rawAddress" />
             </div>
           </div>
           <div
@@ -69,7 +72,8 @@
             <ul>
               <li
                 v-for="event in events"
-                class="flex space-x-1 overflow-hidden text-sm whitespace-nowrap"
+                class="flex space-x-1 overflow-hidden whitespace-nowrap"
+                style="line-height: 2"
               >
                 <span>{{ event.date }} &bull; </span>
                 <span class="italic">{{ event.title }}</span>
