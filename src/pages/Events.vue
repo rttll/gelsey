@@ -33,7 +33,7 @@
               <a
                 :href="event.address.link"
                 v-if="event.address.link"
-                class="text-xs text-gray-400"
+                class="block text-xs text-gray-400 truncate"
               >
                 {{ event.address.link }}
               </a>

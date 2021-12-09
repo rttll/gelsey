@@ -5,7 +5,7 @@
           <Container>
             <div class="flex items-baseline justify-between">
               <span>Albums</span>
-              <Social />
+              <Social group="music" />
             </div>
           </Container>
         </Heading>

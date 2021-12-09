@@ -4,11 +4,9 @@
       <Container>Contact</Container>
     </Heading>
     <Container>
-      <section class="flex p-4 space-x-1">
-        <span v-for="link in links" :key="link.id">
-          <component class="text-4xl" :is="link.icon[0]" />
-        </span>
-      </section>
+      <div class="text-gray-600">
+        <Social />
+      </div>
       <section class="p-4 ">
         <BlockContent v-if="body" :blocks="body._rawBody" />
       </section>
@@ -39,38 +37,20 @@
 </page-query>
 
 <script>
-// import { LSpotify as spotify } from 'vue-icon-packs/bx'
-import { SpotifyFill as spotify } from 'vue-icon-packs/ri'
-import { MusicalNotes as apple } from 'vue-icon-packs/io'
-import bandcamp from '~/assets/icons/bandcamp.svg'
+
+import Social from '~/components/Social';
+
 export default {
   name: 'Contact',
-  components: { spotify, bandcamp, apple }, 
+  components: { Social }, 
   data() {
     return {
       body: null,
-      links: [],
-      list: [
-        {title: 'Spotify', value: 'spotify' },
-        {title: 'Bandcamp', value: 'bandcamp'},
-        {title: 'Apple Music', value: 'apple'},
-        {title: 'Twitter', value: 'twitter'},
-        {title: 'Facebook', value: 'facebook'},
-        {title: 'Instagram', value: 'instagram'},
-        {title: 'Email', value: 'email'},
-      ]
     };
   },
   created() {
     this.body = this.$page.contact.edges.map((obj) => obj.node)[0];
-    this.links = this.$page.social.edges.map((obj) => {
-      // for (let item of this.list) {
-      //   obj.node[item.value] = obj.node.icon[0] === item.value
-      // }
-      return obj.node
-    })
   },
 };
 </script>
 
-<style></style>

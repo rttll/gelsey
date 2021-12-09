@@ -1,7 +1,7 @@
 <template>
   <div class="flex p-4 space-x-1">
     <span v-for="link in links" :key="link.id">
-      <a :href="link.link" :title="link.name">
+      <a :href="link.link" :title="link.name" class="transition-colors duration-150 hover:text-gray-800">
         <component class="text-3xl" :is="link.icon[0]" />
       </a>
     </span>
@@ -24,31 +24,36 @@
 </static-query>
 
 <script>
-// import { LSpotify as spotify } from 'vue-icon-packs/bx'
+
 import { SpotifyFill as spotify } from 'vue-icon-packs/ri'
 import { MusicalNotes as apple } from 'vue-icon-packs/io'
+import { InstagramFill as instagram, FacebookCircleFill as facebook, TwitterFill as twitter} from 'vue-icon-packs/ri'
+
 import bandcamp from '~/assets/icons/bandcamp.svg'
+
 export default {
-  name: 'Contact',
-  components: { spotify, bandcamp, apple }, 
+  name: 'Social',
+  props: {
+    group: {
+      type: String,
+      default: 'social', 
+      required: false
+    }
+  },
+  components: { spotify, bandcamp, apple, instagram, facebook, twitter }, 
   data() {
     return {
       links: [],
-      list: [
-        {title: 'Spotify', value: 'spotify' },
-        {title: 'Bandcamp', value: 'bandcamp'},
-        {title: 'Apple Music', value: 'apple'},
-        {title: 'Twitter', value: 'twitter'},
-        {title: 'Facebook', value: 'facebook'},
-        {title: 'Instagram', value: 'instagram'},
-        {title: 'Email', value: 'email'},
-      ]
+      groups: {
+        music: ['spotify', 'apple', 'bandcamp'],
+        social: ['email', 'instagram', 'twitter', 'facebook']
+      }
     };
   },
   created() {
-    this.links = this.$static.social.edges.map((obj) => obj.node )
+    this.links = this.$static.social.edges
+      .map((obj) => obj.node )
+      .filter(node => this.groups[this.group].includes(node.icon[0])  )
   },
 };
 </script>
-
-<style></style>
