@@ -7,6 +7,7 @@ export default {
       title: 'Title',
       name: 'title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Title link',
@@ -18,33 +19,20 @@ export default {
       name: 'date_display',
       type: 'string',
       description: 'Date displayed on the website',
-      // options: {
-      //   dateFormat: 'ddd. MMMM DD, YYYY',
-      //   timeFormat: 'h:mm a',
-      //   timeStep: '15',
-      // },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Date',
       name: 'date',
       type: 'datetime',
-      description: 'Used to order events / archive (not visible on site)',
-      options: {
-        // dateFormat: 'ddd. MMMM DD, YYYY',
-        // timeFormat: 'h:mm a',
-        // timeStep: '15',
-      },
+      description: 'Used to order / archive (not visible on site)',
+      validation: (Rule) => Rule.required(),
     },
     {
-      title: 'End Date',
+      title: 'End Date. (If multiple dates) (optional)',
       name: 'end_date',
       type: 'datetime',
-      description: 'Used to order / archive, if mul (not visible on site)',
-      options: {
-        // dateFormat: 'ddd. MMMM DD, YYYY',
-        // timeFormat: 'h:mm a',
-        // timeStep: '15',
-      },
+      description: 'Used to order / archive, (not visible on site)',
     },
     {
       title: 'Ongoing',
