@@ -20,7 +20,12 @@
 
     <Container>
       <div class="space-y-6">
-        <article v-for="comp in work" class="" :key="comp.id">
+        <article
+          v-for="comp in work"
+          class=""
+          :data-id="comp.id"
+          :key="comp.id"
+        >
           <div
             class="flex flex-col space-y-8 md:space-y-0 md:space-x-10 md:flex-row pb-9"
           >
@@ -38,15 +43,17 @@
             >
               <div
                 :class="{
-                  'space-y-4 md:space-y-0 md:flex md:items-start md:space-x-8': true,
+                  'space-y-4 md:space-y-0 md:flex md:items-start md:space-x-8':
+                    comp.hasImage,
                 }"
               >
-                <div class="w-full md:w-1/3">
+                <div class="w-full md:w-1/3" v-if="comp.hasImage">
                   <img src="https://picsum.photos/300" alt="" class="w-full" />
                 </div>
                 <div
                   :class="{
-                    'w-full md:w-2/3 md:transform md:-translate-y-2': true,
+                    'w-full md:w-2/3 md:transform md:-translate-y-2':
+                      comp.hasImage,
                   }"
                 >
                   <BlockContent :blocks="comp._rawShort_description" />
@@ -118,7 +125,7 @@ export default {
           obj.node.title.replace(/./g, (match) => {
             return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-';
           });
-
+        obj.node.hasImage = obj.node.title !== 'The Blurring Test';
         return obj.node;
       })
       .sort((a, b) => a.order - b.order);
