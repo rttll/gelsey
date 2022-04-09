@@ -38,7 +38,7 @@
               </header>
             </div>
             <div
-              class="w-full space-y-4 text-base leading-loose md:w-2/3 md:pr-12"
+              class="w-full space-y-4 text-base leading-loose md:w-2/3"
               v-if="comp._rawShort_description"
             >
               <div
@@ -125,7 +125,8 @@ export default {
           obj.node.title.replace(/./g, (match) => {
             return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-';
           });
-        obj.node.hasImage = obj.node.title !== 'The Blurring Test';
+        obj.node.hasImage =
+          ['The Blurring Test', 'Skylighght'].indexOf(obj.node.title) < 0;
         return obj.node;
       })
       .sort((a, b) => a.order - b.order);
