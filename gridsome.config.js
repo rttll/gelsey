@@ -12,11 +12,10 @@ const postcssPlugins = [tailwind()];
 // if (process.env.NODE_ENV === 'production')
 // postcssPlugins.push(purgecss(require('./purgecss.config.js')));
 
-const isDev = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const projectId = 'w3gbpmev';
-const datasetName = isDev ? 'development' : 'production';
-// const datasetName = 'production';
+const datasetName = isProduction ? 'production' : 'development';
 
 const loaders = (config) => {
   const svgRule = config.module.rule('svg');
