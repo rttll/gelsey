@@ -12,8 +12,11 @@ const postcssPlugins = [tailwind()];
 // if (process.env.NODE_ENV === 'production')
 // postcssPlugins.push(purgecss(require('./purgecss.config.js')));
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const projectId = 'w3gbpmev';
-const datasetName = 'production';
+const datasetName = isDev ? 'development' : 'production';
+// const datasetName = 'production';
 
 const loaders = (config) => {
   const svgRule = config.module.rule('svg');
@@ -29,15 +32,14 @@ module.exports = {
   runtimeCompiler: true,
   templates: {
     SanityWork: [
-      { 
+      {
         component: './src/templates/Work.vue',
         path: (node) => {
-          let slug = node.title
-            .replace(/./g, (match) => {
-              return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-'
-            })
-          return '/composer/' + slug
-        }
+          let slug = node.title.replace(/./g, (match) => {
+            return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-';
+          });
+          return '/composer/' + slug;
+        },
       },
     ],
   },
@@ -55,9 +57,9 @@ module.exports = {
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: 'UA-56707908-1'
-      }
-    }    
+        id: 'UA-56707908-1',
+      },
+    },
   ],
   css: {
     loaderOptions: {

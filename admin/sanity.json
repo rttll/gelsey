@@ -7,6 +7,7 @@
     "projectId": "w3gbpmev",
     "dataset": "production"
   },
+
   "plugins": [
     "@sanity/base",
     "@sanity/components",
@@ -19,9 +20,10 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "api": {
+        "dataset": "development"
+      },
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
