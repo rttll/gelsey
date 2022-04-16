@@ -44,16 +44,25 @@
               <div
                 :class="{
                   'space-y-4 md:space-y-0 md:flex md:items-start md:space-x-8':
-                    comp.hasImage,
+                    comp.short_description_image,
                 }"
               >
-                <div class="w-full md:w-1/3" v-if="comp.hasImage">
-                  <img src="https://picsum.photos/300" alt="" class="w-full" />
+                <div
+                  class="w-full md:w-1/3"
+                  v-if="comp.short_description_image"
+                >
+                  <img
+                    :src="
+                      comp.short_description_image.asset.url + '?auto=format'
+                    "
+                    alt=""
+                    class="w-full"
+                  />
                 </div>
                 <div
                   :class="{
                     'w-full md:w-2/3 md:transform md:-translate-y-2':
-                      comp.hasImage,
+                      comp.short_description_image,
                   }"
                 >
                   <BlockContent :blocks="comp._rawShort_description" />
@@ -94,6 +103,11 @@ query {
         title
         year 
         external_link
+        short_description_image {
+          asset {
+              url
+            }
+        }
         _rawShort_description
         _rawDescription
       }
@@ -125,8 +139,6 @@ export default {
           obj.node.title.replace(/./g, (match) => {
             return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-';
           });
-        obj.node.hasImage =
-          ['The Blurring Test', 'Skylighght'].indexOf(obj.node.title) < 0;
         return obj.node;
       })
       .sort((a, b) => a.order - b.order);
