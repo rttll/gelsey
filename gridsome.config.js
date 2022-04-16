@@ -15,7 +15,8 @@ const postcssPlugins = [tailwind()];
 const isProduction = process.env.NODE_ENV === 'production';
 
 const projectId = 'w3gbpmev';
-const datasetName = isProduction ? 'production' : 'development';
+// const datasetName = isProduction ? 'production' : 'development';
+const datasetName = 'production';
 
 const loaders = (config) => {
   const svgRule = config.module.rule('svg');
