@@ -12,7 +12,10 @@ const postcssPlugins = [tailwind()];
 // if (process.env.NODE_ENV === 'production')
 // postcssPlugins.push(purgecss(require('./purgecss.config.js')));
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const projectId = 'w3gbpmev';
+// const datasetName = isProduction ? 'production' : 'development';
 const datasetName = 'production';
 
 const loaders = (config) => {
@@ -29,15 +32,14 @@ module.exports = {
   runtimeCompiler: true,
   templates: {
     SanityWork: [
-      { 
+      {
         component: './src/templates/Work.vue',
         path: (node) => {
-          let slug = node.title
-            .replace(/./g, (match) => {
-              return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-'
-            })
-          return '/composer/' + slug
-        }
+          let slug = node.title.replace(/./g, (match) => {
+            return /[a-z|A-Z]/.test(match) ? match.toLowerCase() : '-';
+          });
+          return '/composer/' + slug;
+        },
       },
     ],
   },
@@ -55,9 +57,9 @@ module.exports = {
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: 'UA-56707908-1'
-      }
-    }    
+        id: 'UA-56707908-1',
+      },
+    },
   ],
   css: {
     loaderOptions: {
