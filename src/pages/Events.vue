@@ -132,8 +132,7 @@ export default {
         }).format(eventDate);
         node.date = formatted.replace(/\//g, '.');
         return node;
-      })
-      .reverse();
+      });
 
     if (past.length === 0) return;
 
@@ -143,7 +142,7 @@ export default {
       if (!years.includes(element.year)) years.push(element.year);
     });
     for (let year of years) {
-      let batch = past.filter((node) => node.year === year);
+      let batch = past.filter((node) => node.year === year).reverse();
       this.pastEvents.unshift({ [year]: batch });
     }
   },
