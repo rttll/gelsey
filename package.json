@@ -6,6 +6,9 @@
   "author": "Adro <acousens@gmail.com>",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "16.x.x"
+  },
   "scripts": {
     "start": "gridsome develop",
     "explore": "gridsome explore",
