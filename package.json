@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "16.16.x"
+    "node": "16.x.x"
   },
   "scripts": {
     "start": "gridsome develop",
