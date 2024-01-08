@@ -15,8 +15,9 @@
         class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
       >
         <Album
-          v-for="album in albums.filter(a => !a.other)"
-          :album="album" :key="album.id" 
+          v-for="album in albums.filter((a) => !a.other)"
+          :album="album"
+          :key="album.id"
         />
       </section>
     </Container>
@@ -29,10 +30,14 @@
         </Heading>
       </header>
       <Container>
-        <div class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row">
+        <div
+          class="flex flex-col p-4 space-y-4 album-md:flex-wrap album-md:space-y-0 album-md:flex-row"
+        >
           <Album
-            v-for="album in albums.filter(a => a.other)"
-            :album="album" :small="true" :key="album.id" 
+            v-for="album in albums.filter((a) => a.other)"
+            :album="album"
+            :small="true"
+            :key="album.id"
           />
         </div>
       </Container>
@@ -64,7 +69,7 @@
 </page-query>
 
 <script>
-import Album from '../components/Album';
+import Album from '~/components/Album';
 import Social from '~/components/Social';
 export default {
   name: 'Albums',
@@ -73,7 +78,7 @@ export default {
     albums() {
       return this.$page.albums.edges
         .map((obj) => obj.node)
-        .sort((a, b) => a.order - b.order)
+        .sort((a, b) => a.order - b.order);
     },
   },
 };

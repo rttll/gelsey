@@ -19,3 +19,6 @@ admin/*
 
 .vercel
 
+# css output
+src/main.out.css
+
