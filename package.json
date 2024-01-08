@@ -7,12 +7,12 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "16.x.x"
+    "node": "18.x.x"
   },
   "scripts": {
-    "start": "gridsome develop",
-    "explore": "gridsome explore",
-    "build": "gridsome build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider gridsome develop",
+    "build": "postcss src/main.css -o src/main.out.css && NODE_OPTIONS=--openssl-legacy-provider gridsome build",
+    "start:css": "postcss src/main.css -o src/main.out.css --watch",
     "favicons": "node ./util/favicons"
   },
   "dependencies": {
@@ -21,18 +21,18 @@
     "@sanity/client": "^2.8.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@vimeo/player": "^2.15.0",
-    "autoprefixer": "^9",
+    "autoprefixer": "^10.4.16",
     "gridsome": "^0.7.23",
-    "tailwindcss": "^2.0.4",
+    "postcss": "^8.4.33",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "2.2.19",
     "vue-icon-packs": "^1.1.2"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "favicons": "^6.2.2",
     "gridsome-source-sanity": "^1.0.5",
-    "node-sass": "^6.0.1",
     "sanity-blocks-vue-component": "0.1.0",
-    "sass-loader": "^10.1.1",
     "vue-source": "^1.1.1",
     "vue-svg-loader": "^0.16.0"
   }

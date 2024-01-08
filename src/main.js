@@ -1,7 +1,7 @@
 // This is the main.js file. Import global CSS and scripts here.
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
-require('~/main.css');
+require('~/main.out.css');
 
 /*
 https://fontsource.org/fonts/libre-franklin
@@ -20,7 +20,7 @@ import ChevronUp from '~/assets/icons/chevron-up.svg';
 import ExternalLink from '~/assets/icons/external-link.svg';
 import ArrowUpRight from '~/assets/icons/arrow-up-right.svg';
 
-import VueSource from 'vue-source'
+import VueSource from 'vue-source';
 
 export default function(Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout);
@@ -33,5 +33,5 @@ export default function(Vue, { router, head, isClient }) {
   Vue.component('ExternalLink', ExternalLink);
   Vue.component('ArrowUpRight', ArrowUpRight);
 
-  Vue.use(VueSource)
+  Vue.use(VueSource);
 }
