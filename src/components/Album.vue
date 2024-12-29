@@ -64,13 +64,13 @@ export default {
   height: 0;
   padding-bottom: 100%;
 }
-.album-container&:hover .album-content {
+.album-container:hover .album-content {
   opacity: 1;
 }
-.album-container&:hover .image-container {
+.album-container:hover .image-container {
   filter: grayscale(80%);
 }
-.album-container&:hover .image-container:before {
+.album-container:hover .image-container:before {
   opacity: 1;
 }
 </style>
