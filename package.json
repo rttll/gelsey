@@ -6,8 +6,9 @@
   "author": "Adro <acousens@gmail.com>",
   "license": "MIT",
   "private": true,
+  "packageManager": "yarn@3.8.7",
   "engines": {
-    "node": "18.x.x"
+    "node": "22.x"
   },
   "scripts": {
     "start": "NODE_OPTIONS=--openssl-legacy-provider gridsome develop",

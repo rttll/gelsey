@@ -4,7 +4,6 @@
 src/.temp
 node_modules
 
-dist
 
 # Sanity
 !admin/
@@ -13,12 +12,25 @@ admin/*
 !admin/sanity.json
 !admin/desk
 
+# yarn 
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# env
 
 .env
 .env.*
 
 .vercel
 
-# css output
+# build and css output
 src/main.out.css
+dist
+
 
